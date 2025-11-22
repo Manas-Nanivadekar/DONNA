@@ -15,7 +15,7 @@
 
 ---
 
-## 🎯 The Problem
+## The Problem
 
 Organizations suffer from **institutional amnesia**:
 
@@ -28,7 +28,7 @@ The question "Has anyone tried this before?" echoes through Slack channels, met 
 
 ---
 
-## 💡 The Solution
+## The Solution
 
 **DONNA** is an AI-powered institutional memory assistant that captures, contextualizes, and surfaces historical organizational knowledge through conversational exploration of real case studies.
 
@@ -41,29 +41,29 @@ The question "Has anyone tried this before?" echoes through Slack channels, met 
 
 ---
 
-## ✨ Features
+## Features
 
-### 📚 Case-Based Learning
+### Case-Based Learning
 Explore four interactive case workspaces, each representing a real company's historical data including Slack discussions, GitHub commits, Jira tickets, Confluence documentation, and Google Docs notes.
 
-### 💬 Conversational AI
+### Conversational AI
 Ask DONNA anything about organizational history and receive contextual, AI-generated answers using the company's data as reference.
 
-### 🎨 Polished Interface
+### Polished Interface
 - Elegant black-and-white aesthetic
 - Smooth animations via Framer Motion
 - Mobile-responsive design
 - Collapsible context panels
 - Smart query suggestions
 
-### 🧠 Intelligent Context
+### Intelligent Context
 - **Vector Search**: Semantic understanding via Qdrant vector database
 - **Separate Chat Threads**: Each case maintains its own workspace memory
 - **Streamed Responses**: Real-time AI generation for fluid interaction
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌────────────────────────────────────────────────────────────┐
@@ -114,7 +114,7 @@ Ask DONNA anything about organizational history and receive contextual, AI-gener
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -251,7 +251,7 @@ DONNA/
 
 ---
 
-## 🎨 User Experience Flow
+## User Experience Flow
 
 1. **Landing Page**: User sees four case study cards
 2. **One-Time Registration**: User provides name and email (stored locally)
@@ -265,7 +265,7 @@ DONNA/
 
 ---
 
-## 🔧 API Endpoints
+## API Endpoints
 
 ### `POST /api/chat`
 Main chat endpoint for conversational AI
@@ -309,7 +309,7 @@ Fetch specific case details and context
 
 ---
 
-## 🧪 Example Queries
+## Example Queries
 
 Each case workspace includes intelligent query suggestions:
 
@@ -330,7 +330,7 @@ Each case workspace includes intelligent query suggestions:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please follow these steps:
 
