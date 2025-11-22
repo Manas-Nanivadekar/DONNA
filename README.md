@@ -198,7 +198,7 @@ The application will be available at:
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 DONNA/
@@ -363,10 +363,10 @@ Fetch specific case details and context
 > - Contact @db-expert-mike for advice"
 
 **Impact:**
-- ✅ **Risk Mitigation:** Team uses proven dual-write strategy instead of dangerous big-bang approach
-- ✅ **Zero Downtime:** Avoids 6-hour outage that would cost $50K+ in lost revenue
-- ✅ **Confidence:** Team has a tested playbook and knows who to ask for help
-- ✅ **Time Saved:** 3-7 days of research and planning
+- **Risk Mitigation:** Team uses proven dual-write strategy instead of dangerous big-bang approach
+- **Zero Downtime:** Avoids 6-hour outage that would cost $50K+ in lost revenue
+- **Confidence:** Team has a tested playbook and knows who to ask for help
+- **Time Saved:** 3-7 days of research and planning
 
 ---
 
@@ -393,7 +393,7 @@ Organizations using DONNA report measurable ROI across common engineering scenar
 
 ---
 
-## 🧪 Additional Example Queries
+## Additional Example Queries
 
 Each case workspace includes intelligent query suggestions:
 
