@@ -14,7 +14,7 @@ from utils.stream import (
 )
 from utils.tools import AVAILABLE_TOOLS, TOOL_DEFINITIONS
 from utils.contextual_llm import ContextualLLM
-from utils.company_metadata import CompanyMetadata, CompanyDataStore
+from utils.company_metadata import CompanyMetadata, CompanyDataStore, UserManager
 from utils.ingestor import DataIngestor
 
 
@@ -43,9 +43,15 @@ class ContextualQueryRequest(BaseModel):
     stream: bool = False
 
 
+class UserRegistrationRequest(BaseModel):
+    name: str
+    email: str
+
+
 class CreateCompanyRequest(BaseModel):
     company_id: str
     name: str
+    user_id: str
     short_summary: str = ""
     long_summary: str = ""
     suggested_questions: List[str] = []
@@ -142,13 +148,56 @@ async def get_company_metadata(company_id: str):
         return {"success": False, "error": str(e)}
 
 
+@app.post("/api/users/register")
+async def register_user(request: UserRegistrationRequest):
+    try:
+        user_manager = UserManager()
+        result = user_manager.create_user(name=request.name, email=request.email)
+        return result
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
+@app.get("/api/users/{user_id}")
+async def get_user(user_id: str):
+    try:
+        user_manager = UserManager()
+        user = user_manager.get_user(user_id)
+        if not user:
+            return {"success": False, "error": "User not found"}
+        return {"success": True, "user": user}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
+@app.get("/api/users/{user_id}/companies")
+async def get_user_companies(user_id: str):
+    try:
+        user_manager = UserManager()
+        user = user_manager.get_user(user_id)
+        if not user:
+            return {"success": False, "error": "User not found"}
+
+        metadata = CompanyMetadata()
+        companies = metadata.get_user_companies(user_id)
+        return {"success": True, "user_id": user_id, "companies": companies}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
 @app.post("/api/companies/create")
 async def create_company(request: CreateCompanyRequest):
     try:
+        user_manager = UserManager()
+        user = user_manager.get_user(request.user_id)
+        if not user:
+            return {"success": False, "error": "User not found"}
+
         metadata = CompanyMetadata()
         result = metadata.create_company(
             company_id=request.company_id,
             name=request.name,
+            user_id=request.user_id,
             short_summary=request.short_summary,
             long_summary=request.long_summary,
             suggested_questions=request.suggested_questions,
@@ -163,6 +212,7 @@ async def create_company(request: CreateCompanyRequest):
         return {
             "success": True,
             "company_id": request.company_id,
+            "user_id": request.user_id,
             "message": "Company created successfully",
         }
     except Exception as e:

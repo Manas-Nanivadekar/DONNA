@@ -1,10 +1,53 @@
 import os
+import uuid
 from datetime import datetime
 from typing import Optional, List, Dict
 from pymongo import MongoClient
 from dotenv import load_dotenv
 
 load_dotenv()
+
+
+class UserManager:
+    def __init__(self):
+        mongo_uri = os.getenv("MONGODB_URI", "mongodb://localhost:27017/")
+        self.client = MongoClient(mongo_uri)
+        self.db = self.client["donna"]
+        self.collection = self.db["users"]
+
+    def create_user(self, name: str, email: str) -> Dict:
+        existing = self.collection.find_one({"email": email})
+        if existing:
+            return {
+                "success": True,
+                "user_id": existing["user_id"],
+                "message": "User already exists",
+                "existing": True,
+            }
+
+        user_id = str(uuid.uuid4())
+        user = {
+            "user_id": user_id,
+            "name": name,
+            "email": email,
+            "created_at": datetime.utcnow(),
+        }
+
+        self.collection.insert_one(user)
+        return {
+            "success": True,
+            "user_id": user_id,
+            "message": "User created successfully",
+            "existing": False,
+        }
+
+    def get_user(self, user_id: str) -> Optional[Dict]:
+        user = self.collection.find_one({"user_id": user_id}, {"_id": 0})
+        return user
+
+    def get_user_by_email(self, email: str) -> Optional[Dict]:
+        user = self.collection.find_one({"email": email}, {"_id": 0})
+        return user
 
 
 class CompanyMetadata:
@@ -37,6 +80,7 @@ class CompanyMetadata:
         self,
         company_id: str,
         name: str,
+        user_id: str,
         short_summary: str = "",
         long_summary: str = "",
         suggested_questions: List[str] = None,
@@ -48,6 +92,7 @@ class CompanyMetadata:
         metadata = {
             "company_id": company_id,
             "name": name,
+            "user_id": user_id,
             "short_summary": short_summary,
             "long_summary": long_summary,
             "suggested_questions": suggested_questions or [],
@@ -56,6 +101,14 @@ class CompanyMetadata:
 
         self.collection.insert_one(metadata)
         return {"success": True, "company_id": company_id}
+
+    def get_user_companies(self, user_id: str) -> List[Dict]:
+        companies = list(
+            self.collection.find({"user_id": user_id}, {"_id": 0}).sort(
+                "created_at", -1
+            )
+        )
+        return companies
 
     def seed_demo_companies(self):
         existing = self.collection.count_documents({})
