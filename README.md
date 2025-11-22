@@ -253,8 +253,8 @@ DONNA/
 
 ## User Experience Flow
 
-1. **Landing Page**: User sees four case study cards
-2. **One-Time Registration**: User provides name and email (stored locally)
+1. **Landing Page**: User sees three case study cards
+2. **One-Time Registration**: User provides name and email
 3. **Case Selection**: Click a case to enter its workspace
 4. **Workspace Interface**:
    - **Left Panel**: Collapsible case summary with full historical context
