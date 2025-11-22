@@ -14,7 +14,8 @@ from utils.stream import (
 )
 from utils.tools import AVAILABLE_TOOLS, TOOL_DEFINITIONS
 from utils.contextual_llm import ContextualLLM
-from utils.company_metadata import CompanyMetadata
+from utils.company_metadata import CompanyMetadata, CompanyDataStore
+from utils.ingestor import DataIngestor
 
 
 load_dotenv(".env.local")
@@ -40,6 +41,18 @@ class ContextualQueryRequest(BaseModel):
     use_context: bool = True
     limit: int = 10
     stream: bool = False
+
+
+class CreateCompanyRequest(BaseModel):
+    company_id: str
+    name: str
+    short_summary: str = ""
+    long_summary: str = ""
+    suggested_questions: List[str] = []
+
+
+class IngestDataRequest(BaseModel):
+    data: List[dict]
 
 
 @app.post("/api/chat")
@@ -125,5 +138,83 @@ async def get_company_metadata(company_id: str):
         if not company_data:
             return {"success": False, "error": "Company not found"}
         return {"success": True, "metadata": company_data}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
+@app.post("/api/companies/create")
+async def create_company(request: CreateCompanyRequest):
+    try:
+        metadata = CompanyMetadata()
+        result = metadata.create_company(
+            company_id=request.company_id,
+            name=request.name,
+            short_summary=request.short_summary,
+            long_summary=request.long_summary,
+            suggested_questions=request.suggested_questions,
+        )
+
+        if not result.get("success"):
+            return result
+
+        ingestor = DataIngestor()
+        ingestor.setup_company(request.company_id)
+
+        return {
+            "success": True,
+            "company_id": request.company_id,
+            "message": "Company created successfully",
+        }
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
+@app.post("/api/companies/{company_id}/ingest")
+async def ingest_company_data(company_id: str, request: IngestDataRequest):
+    try:
+        metadata = CompanyMetadata()
+        company_data = metadata.get_company_metadata(company_id)
+        if not company_data:
+            return {"success": False, "error": "Company not found"}
+
+        ingestor = DataIngestor()
+        qdrant_result = ingestor.ingest_data(company_id, request.data)
+
+        data_store = CompanyDataStore()
+        mongo_result = data_store.store_data(company_id, request.data)
+
+        return {
+            "success": True,
+            "company_id": company_id,
+            "qdrant": {
+                "items_ingested": qdrant_result.get("items_ingested", 0),
+                "collection_name": qdrant_result.get("collection_name", ""),
+            },
+            "mongodb": {
+                "items_stored": mongo_result.get("items_stored", 0),
+            },
+        }
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
+@app.get("/api/companies/{company_id}/data")
+async def get_company_data(
+    company_id: str, source: str = Query(None), limit: int = Query(100)
+):
+    try:
+        data_store = CompanyDataStore()
+        data = data_store.get_company_data(company_id, source, limit)
+        return {"success": True, "company_id": company_id, "data": data, "count": len(data)}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
+@app.get("/api/companies/{company_id}/stats")
+async def get_company_stats(company_id: str):
+    try:
+        data_store = CompanyDataStore()
+        stats = data_store.get_data_stats(company_id)
+        return {"success": True, "stats": stats}
     except Exception as e:
         return {"success": False, "error": str(e)}

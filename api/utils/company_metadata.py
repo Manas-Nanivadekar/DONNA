@@ -33,6 +33,30 @@ class CompanyMetadata:
         result = self.collection.insert_one(metadata)
         return str(result.inserted_id)
 
+    def create_company(
+        self,
+        company_id: str,
+        name: str,
+        short_summary: str = "",
+        long_summary: str = "",
+        suggested_questions: List[str] = None,
+    ) -> Dict:
+        existing = self.collection.find_one({"company_id": company_id})
+        if existing:
+            return {"success": False, "error": "Company already exists"}
+
+        metadata = {
+            "company_id": company_id,
+            "name": name,
+            "short_summary": short_summary,
+            "long_summary": long_summary,
+            "suggested_questions": suggested_questions or [],
+            "created_at": datetime.utcnow(),
+        }
+
+        self.collection.insert_one(metadata)
+        return {"success": True, "company_id": company_id}
+
     def seed_demo_companies(self):
         existing = self.collection.count_documents({})
         if existing > 0:
@@ -154,6 +178,68 @@ This incident illustrated that retry logic is not a universal solution—it must
 
         self.collection.insert_many(companies_data)
         print(f"Seeded {len(companies_data)} demo companies")
+
+
+class CompanyDataStore:
+    def __init__(self):
+        mongo_uri = os.getenv("MONGODB_URI", "mongodb://localhost:27017/")
+        self.client = MongoClient(mongo_uri)
+        self.db = self.client["donna"]
+        self.collection = self.db["company_data"]
+
+    def store_data(self, company_id: str, data_items: List[Dict]) -> Dict:
+        if not isinstance(data_items, list):
+            data_items = [data_items]
+
+        documents = []
+        for item in data_items:
+            if not isinstance(item, dict):
+                continue
+
+            doc = {
+                "company_id": company_id,
+                "source": item.get("source", "custom"),
+                "data": item,
+                "ingested_at": datetime.utcnow(),
+            }
+            documents.append(doc)
+
+        if documents:
+            result = self.collection.insert_many(documents)
+            return {
+                "success": True,
+                "items_stored": len(result.inserted_ids),
+                "inserted_ids": [str(id) for id in result.inserted_ids],
+            }
+
+        return {"success": False, "error": "No valid documents to store"}
+
+    def get_company_data(
+        self, company_id: str, source: Optional[str] = None, limit: int = 100
+    ) -> List[Dict]:
+        query = {"company_id": company_id}
+        if source:
+            query["source"] = source
+
+        results = list(
+            self.collection.find(query, {"_id": 0}).sort("ingested_at", -1).limit(limit)
+        )
+        return results
+
+    def get_data_stats(self, company_id: str) -> Dict:
+        pipeline = [
+            {"$match": {"company_id": company_id}},
+            {"$group": {"_id": "$source", "count": {"$sum": 1}}},
+        ]
+
+        stats = list(self.collection.aggregate(pipeline))
+        total = sum(s["count"] for s in stats)
+
+        return {
+            "company_id": company_id,
+            "total_items": total,
+            "by_source": {s["_id"]: s["count"] for s in stats},
+        }
 
 
 if __name__ == "__main__":

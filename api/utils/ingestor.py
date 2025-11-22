@@ -166,3 +166,63 @@ class DataIngestor:
 
         print(f"[{company_id}] {point_id} items ingested")
         return collection_name
+
+    def ingest_data(self, company_id: str, data: list) -> dict:
+        collection_name = self.setup_company(company_id)
+
+        if not isinstance(data, list):
+            data = [data]
+
+        point_id_start = self._get_next_point_id(collection_name)
+        point_id = point_id_start
+
+        points = []
+        for item in data:
+            if not isinstance(item, dict):
+                continue
+
+            content = self.extract_content(item)
+            if not content.strip():
+                continue
+
+            embedding = self.embed(content)
+
+            points.append(
+                PointStruct(
+                    id=point_id,
+                    vector=embedding,
+                    payload={
+                        "company_id": company_id,
+                        "source": item.get("source", "custom"),
+                        "sprint": item.get("sprint", 0),
+                        "sprint_focus": item.get("sprint_focus", ""),
+                        "bug_stage": item.get("bug_stage", ""),
+                        "content": content[:1000],
+                        "full_data": item,
+                    },
+                )
+            )
+            point_id += 1
+
+        if points:
+            self.client.upsert(collection_name=collection_name, points=points)
+
+        items_ingested = point_id - point_id_start
+        return {
+            "success": True,
+            "company_id": company_id,
+            "items_ingested": items_ingested,
+            "collection_name": collection_name,
+        }
+
+    def _get_next_point_id(self, collection_name: str) -> int:
+        try:
+            result = self.client.scroll(
+                collection_name=collection_name, limit=1, with_payload=False
+            )
+            if result[0]:
+                max_id = max([point.id for point in result[0]])
+                return max_id + 1
+            return 0
+        except:
+            return 0
