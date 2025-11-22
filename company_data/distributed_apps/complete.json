@@ -1,0 +1,962 @@
+[
+  {
+    "commit_hash": "a1b2c3d4e5f6789012345678",
+    "author": "Rahul Sharma",
+    "message": "Initial architecture setup - Spring Boot, RabbitMQ, MongoDB integration",
+    "timestamp": "2024-01-15T10:30:00Z",
+    "files_changed": [
+      "src/app.py",
+      "config/settings.yaml",
+      "src/RabbitMQConfig.java"
+    ],
+    "lessons_learned": "Need to revisit RabbitMQ configuration for better error handling.  Implement aggressive retry logic is crucial.",
+    "bug_related": "This commit directly addresses the need for Implement aggressive retry logic to handle potential RabbitMQ connection failures.",
+    "source": "github_commits",
+    "company_id": "distributed_apps",
+    "sprint": 1,
+    "sprint_focus": "Initial architecture",
+    "bug_stage": "Implement aggressive retry logic"
+  },
+  {
+    "commit_hash": "b2c3d4e5f678901234567890",
+    "author": "Priya Sharma",
+    "message": "Added basic Angular components for UI",
+    "timestamp": "2024-01-16T09:00:00Z",
+    "files_changed": [
+      "src/app.py",
+      "src/components/Dashboard.js"
+    ],
+    "lessons_learned": "UI needs more styling.  Let's add some basic styles.",
+    "bug_related": "Not directly related, but good to ensure UI responsiveness.",
+    "source": "github_commits",
+    "company_id": "distributed_apps",
+    "sprint": 1,
+    "sprint_focus": "Initial architecture",
+    "bug_stage": "Implement aggressive retry logic"
+  },
+  {
+    "channel": "#engineering",
+    "thread_title": "Discussion about Initial architecture & UI",
+    "messages": [
+      {
+        "author": "Rahul",
+        "timestamp": "2024-01-15T11:00:00Z",
+        "text": "Yaar, Initial architecture pe kaam karna hai.  Amit, tu dekh raha kya?",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Priya",
+        "timestamp": "2024-01-15T11:05:00Z",
+        "text": "Haan bhai, main dekh rahi hoon.  UI components bhi bana rahi hoon.",
+        "reactions": [
+          "✅"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-01-15T11:10:00Z",
+        "text": "Theek hai, let me check the code and see how we can integrate it with RabbitMQ.  Arrey, ye production mein aayega kya, if we don't handle errors properly?",
+        "reactions": []
+      },
+      {
+        "author": "Neha",
+        "timestamp": "2024-01-15T11:15:00Z",
+        "text": "Arrey, ye issue production mein aayega kya?  Agar RabbitMQ connection fail ho toh kya hoga?  Implement aggressive retry logic is important!",
+        "reactions": [
+          "😅"
+        ]
+      },
+      {
+        "author": "Rahul",
+        "timestamp": "2024-01-15T11:20:00Z",
+        "text": "Nahi yaar, testing mein catch kar lenge.  Let's build a robust retry mechanism.  Arrey, Amit, tu dekhna hai.",
+        "reactions": [
+          "👍"
+        ]
+      }
+    ],
+    "key_decisions": "Decided to prioritize Spring Boot, RabbitMQ, and MongoDB integration for the initial architecture.",
+    "warnings": "Warning: Need to implement robust error handling and a retry mechanism for RabbitMQ connections.  Implement aggressive retry logic is critical for stability.",
+    "severity": "high",
+    "bug_clues": "Neha's question about potential production issues highlights the need for a robust retry strategy.  Implement aggressive retry logic is key.",
+    "source": "slack_conversations",
+    "company_id": "distributed_apps",
+    "sprint": 1,
+    "sprint_focus": "Initial architecture",
+    "bug_stage": "Implement aggressive retry logic"
+  },
+  {
+    "ticket_id": "TECH-101",
+    "title": "Implement Initial architecture - Spring Boot, RabbitMQ, MongoDB",
+    "description": "Detailed description of Initial architecture work: Setting up Spring Boot application, integrating with RabbitMQ for message queuing, and using MongoDB for data persistence.  Focus on building a scalable and resilient system. Implement aggressive retry logic is a priority.",
+    "status": "done",
+    "priority": "high",
+    "assignee": "Arjun Kumar",
+    "comments": [
+      "Update 1: Initial Spring Boot project created.",
+      "Update 2: RabbitMQ configuration completed - Implement aggressive retry logic is being investigated."
+    ],
+    "sprint_points": 8,
+    "bug_connection": "Directly related to the need to implement Implement aggressive retry logic to handle potential RabbitMQ connection failures and ensure system resilience.",
+    "source": "jira_tickets",
+    "company_id": "distributed_apps",
+    "sprint": 1,
+    "sprint_focus": "Initial architecture",
+    "bug_stage": "Implement aggressive retry logic"
+  },
+  {
+    "title": "Initial Architecture - Spring Boot, RabbitMQ, MongoDB",
+    "content": "Markdown content about Initial architecture: Overview of the chosen technologies (Spring Boot, RabbitMQ, MongoDB), design decisions, and initial implementation steps.  Emphasize the importance of Implement aggressive retry logic for RabbitMQ integration.  Best practices for Spring Boot development are also included.",
+    "author": "Sneha Patel",
+    "tags": [
+      "sprint1",
+      "docs",
+      "architecture"
+    ],
+    "related_incidents": [],
+    "best_practices": [
+      "Follow Spring Boot best practices.",
+      "Use dependency injection effectively."
+    ],
+    "common_mistakes": [
+      "Ignoring error handling in RabbitMQ connections - Implement aggressive retry logic is crucial to avoid data loss."
+    ],
+    "created_at": "2024-01-20T09:00:00Z",
+    "source": "confluence_docs",
+    "company_id": "distributed_apps",
+    "sprint": 1,
+    "sprint_focus": "Initial architecture",
+    "bug_stage": "Implement aggressive retry logic"
+  },
+  {
+    "title": "Sprint 1 Planning - Initial Architecture",
+    "doc_type": "meeting_notes",
+    "content": "Meeting notes about Initial architecture: Key discussion points, action items, and decisions made during the sprint planning meeting.  We decided to prioritize the Spring Boot, RabbitMQ, and MongoDB integration. Implement aggressive retry logic is a key takeaway.",
+    "attendees": [
+      "Rahul",
+      "Priya",
+      "Amit",
+      "Arjun"
+    ],
+    "action_items": [
+      "Rahul: Finalize RabbitMQ configuration.",
+      "Priya: Start working on the UI components."
+    ],
+    "decisions_made": [
+      "Decided to use Spring Boot for the application framework.",
+      "Implemented aggressive retry logic for RabbitMQ."
+    ],
+    "bug_mentions": "Several discussions revolved around the importance of handling RabbitMQ connection failures and the need to Implement aggressive retry logic.",
+    "source": "google_docs",
+    "company_id": "distributed_apps",
+    "sprint": 1,
+    "sprint_focus": "Initial architecture",
+    "bug_stage": "Implement aggressive retry logic"
+  },
+  {
+    "commit_hash": "a1b2c3d4e5",
+    "author": "Rahul Sharma",
+    "message": "Implemented core features - initial version",
+    "timestamp": "2024-03-15T10:30:00Z",
+    "files_changed": [
+      "src/app.py",
+      "config/settings.yaml",
+      "src/models.py"
+    ],
+    "lessons_learned": "Learned that transient failures need robust handling - initial implementation is a good start.",
+    "bug_related": "Initial implementation focused on handling transient failures effectively; further refinement needed based on actual production data.",
+    "source": "github_commits",
+    "company_id": "distributed_apps",
+    "sprint": 2,
+    "sprint_focus": "Core features",
+    "bug_stage": "Works well for transient failures"
+  },
+  {
+    "commit_hash": "f67890abc1",
+    "author": "Priya Sharma",
+    "message": "Added RabbitMQ integration for core features",
+    "timestamp": "2024-03-15T11:45:00Z",
+    "files_changed": [
+      "src/rabbitmq_producer.py",
+      "config/rabbitmq.yaml"
+    ],
+    "lessons_learned": "RabbitMQ integration is working, but need to monitor queue sizes closely.",
+    "bug_related": "RabbitMQ integration is a key component in the transient failure strategy.",
+    "source": "github_commits",
+    "company_id": "distributed_apps",
+    "sprint": 2,
+    "sprint_focus": "Core features",
+    "bug_stage": "Works well for transient failures"
+  },
+  {
+    "channel": "#engineering",
+    "thread_title": "Discussion about Core features - Yaar, Core features pe kaam karna hai",
+    "messages": [
+      {
+        "author": "Rahul",
+        "timestamp": "2024-03-15T11:00:00Z",
+        "text": "Yaar, Core features pe kaam karna hai.  Speed chahiye!",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Priya",
+        "timestamp": "2024-03-15T11:05:00Z",
+        "text": "Haan bhai, main dekh rahi hoon.  Code dekhungi main.",
+        "reactions": [
+          "✅"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-03-15T11:10:00Z",
+        "text": "Theek hai, let me check the code.  It's looking okay so far.",
+        "reactions": []
+      },
+      {
+        "author": "Neha",
+        "timestamp": "2024-03-15T11:15:00Z",
+        "text": "Arrey, ye issue production mein aayega kya?  If it breaks, tension!",
+        "reactions": [
+          "😅"
+        ]
+      },
+      {
+        "author": "Rahul",
+        "timestamp": "2024-03-15T11:20:00Z",
+        "text": "Nahi yaar, testing mein catch kar lenge.  We’ll catch it in testing.  Very important!",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Priya",
+        "timestamp": "2024-03-15T11:25:00Z",
+        "text": "Okay, so we're focusing on robust error handling, right?  Important for transient failures.",
+        "reactions": [
+          "🤔"
+        ]
+      }
+    ],
+    "key_decisions": "Decided to prioritize robust error handling and monitoring for transient failures.",
+    "warnings": "Warning: Transient failures need to be handled gracefully – potential for production impact if not addressed.",
+    "severity": "medium",
+    "bug_clues": "Frequent discussion about 'production' and potential issues hints at the need for robust error handling.",
+    "source": "slack_conversations",
+    "company_id": "distributed_apps",
+    "sprint": 2,
+    "sprint_focus": "Core features",
+    "bug_stage": "Works well for transient failures"
+  },
+  {
+    "ticket_id": "TECH-201",
+    "title": "Implement Core Features - Yaar, speed chahiye!",
+    "description": "Detailed description of implementing core features, focusing on speed and robustness. Includes integration with RabbitMQ.",
+    "status": "done",
+    "priority": "high",
+    "assignee": "Arjun Kumar",
+    "comments": [
+      "Update 1 - Initial implementation complete.",
+      "Update 2 -  RabbitMQ integration verified."
+    ],
+    "sprint_points": 8,
+    "bug_connection": "Directly related to the need for handling transient failures - the core focus of this sprint.",
+    "source": "jira_tickets",
+    "company_id": "distributed_apps",
+    "sprint": 2,
+    "sprint_focus": "Core features",
+    "bug_stage": "Works well for transient failures"
+  },
+  {
+    "title": "Documentation for Core Features - Speed and Transient Failures",
+    "content": "Markdown content about implementing core features, with a strong emphasis on speed and robust handling of transient failures. Includes diagrams and code snippets.",
+    "author": "Sneha Patel",
+    "tags": [
+      "sprint2",
+      "docs",
+      "core_features"
+    ],
+    "related_incidents": [],
+    "best_practices": [
+      "Implement comprehensive error handling.",
+      "Monitor queue sizes and response times."
+    ],
+    "common_mistakes": [
+      "Ignoring transient failures – leads to cascading issues.",
+      "Lack of proper logging – makes debugging difficult."
+    ],
+    "created_at": "2024-03-20T09:00:00Z",
+    "source": "confluence_docs",
+    "company_id": "distributed_apps",
+    "sprint": 2,
+    "sprint_focus": "Core features",
+    "bug_stage": "Works well for transient failures"
+  },
+  {
+    "title": "Sprint 2 Planning - Core Features - Yaar, Speed is Key!",
+    "doc_type": "meeting_notes",
+    "content": "Meeting notes from the sprint planning meeting, discussing the core features, prioritizing speed, and the importance of handling transient failures.  Action items assigned to team members.",
+    "attendees": [
+      "Rahul",
+      "Priya",
+      "Amit",
+      "Arjun"
+    ],
+    "action_items": [
+      "Rahul:  Review RabbitMQ configuration.",
+      "Priya:  Implement error logging."
+    ],
+    "decisions_made": [
+      "Prioritize speed and robust error handling.",
+      "Implement comprehensive monitoring."
+    ],
+    "bug_mentions": "Continuous reference to 'production' and the need to avoid issues when things go wrong.",
+    "source": "google_docs",
+    "company_id": "distributed_apps",
+    "sprint": 2,
+    "sprint_focus": "Core features",
+    "bug_stage": "Works well for transient failures"
+  },
+  {
+    "commit_hash": "a1b2c3d4e5",
+    "author": "Rahul Sharma",
+    "message": "Scaling improvements - Performance optimization and database connection pooling.",
+    "timestamp": "2024-06-15T10:30:00Z",
+    "files_changed": [
+      "src/app.py",
+      "config/settings.yaml",
+      "src/db_pool.py"
+    ],
+    "lessons_learned": "Permanent errors getting masked are harder to diagnose if we don't have proper logging. Need to add more detailed logging at the database layer.",
+    "bug_related": "This commit directly addresses the issue of Permanent errors getting masked by adding enhanced logging around database interactions.",
+    "source": "github_commits",
+    "company_id": "distributed_apps",
+    "sprint": 3,
+    "sprint_focus": "Scaling",
+    "bug_stage": "Permanent errors get masked"
+  },
+  {
+    "commit_hash": "f7e8d9a0b1",
+    "author": "Priya Verma",
+    "message": "Added metrics dashboard for API response times.",
+    "timestamp": "2024-06-16T09:00:00Z",
+    "files_changed": [
+      "src/metrics.py",
+      "config/settings.yaml"
+    ],
+    "lessons_learned": "We need to monitor the health of our RabbitMQ queues - slow message processing could be masking errors.",
+    "bug_related": "Potential correlation between slow RabbitMQ queue processing and Permanent errors getting masked.",
+    "source": "github_commits",
+    "company_id": "distributed_apps",
+    "sprint": 3,
+    "sprint_focus": "Scaling",
+    "bug_stage": "Permanent errors get masked"
+  },
+  {
+    "channel": "#engineering",
+    "thread_title": "Discussion about Scaling - API Performance & RabbitMQ",
+    "messages": [
+      {
+        "author": "Rahul",
+        "timestamp": "2024-06-15T11:00:00Z",
+        "text": "Yaar, Scaling pe kaam karna hai! API response times hain slow.  Dekho, users se complaints aa rahe hain.",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Priya",
+        "timestamp": "2024-06-15T11:05:00Z",
+        "text": "Haan bhai, main dekh rahi hoon.  Database connection pool check kar rahi hoon.  Possible bottleneck hai.",
+        "reactions": [
+          "✅"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-06-15T11:10:00Z",
+        "text": "Theek hai, let me check the code.  RabbitMQ queues bhi dekhunga.  Slow message processing issue hai kya?",
+        "reactions": []
+      },
+      {
+        "author": "Neha",
+        "timestamp": "2024-06-15T11:15:00Z",
+        "text": "Arrey, ye issue production mein aayega kya?  Users ko irritation hoga.",
+        "reactions": [
+          "😅"
+        ]
+      },
+      {
+        "author": "Rahul",
+        "timestamp": "2024-06-15T11:20:00Z",
+        "text": "Nahi yaar, testing mein catch kar lenge.  Testing mein sab check karenge.  Testing mein sab sahi hoga.",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-06-15T11:25:00Z",
+        "text": "Okay, I've added some metrics to monitor the API response times. Let's see if we can identify any bottlenecks.",
+        "reactions": [
+          "👍"
+        ]
+      }
+    ],
+    "key_decisions": "Decision to implement a metrics dashboard for API response times and monitor RabbitMQ queues.",
+    "warnings": "Warning: Permanent errors getting masked could be due to slow API responses or RabbitMQ queue processing. Need to investigate thoroughly.",
+    "severity": "medium",
+    "bug_clues": "Rahul mentioned 'irritation hoga' - this suggests a potential user impact related to the Permanent errors get masked.",
+    "source": "slack_conversations",
+    "company_id": "distributed_apps",
+    "sprint": 3,
+    "sprint_focus": "Scaling",
+    "bug_stage": "Permanent errors get masked"
+  },
+  {
+    "ticket_id": "TECH-301",
+    "title": "Implement Scaling - API Performance & RabbitMQ Monitoring",
+    "description": "Detailed description of Scaling work - Optimizing API response times and implementing monitoring for RabbitMQ queues to prevent message processing delays.  Address potential Permanent errors get masked.  Focus on improving user experience.",
+    "status": "in progress",
+    "priority": "high",
+    "assignee": "Arjun Kumar",
+    "comments": [
+      "Update 1: Initial investigation shows slow API response times.",
+      "Update 2: RabbitMQ queues are also experiencing delays."
+    ],
+    "sprint_points": 8,
+    "bug_connection": "Directly related to Permanent errors get masked - slow processing could mask the root cause.",
+    "source": "jira_tickets",
+    "company_id": "distributed_apps",
+    "sprint": 3,
+    "sprint_focus": "Scaling",
+    "bug_stage": "Permanent errors get masked"
+  },
+  {
+    "title": "Scaling - API Performance & RabbitMQ Monitoring",
+    "content": "Markdown content about Scaling - API Performance & RabbitMQ Monitoring.  Key considerations include API response times, RabbitMQ queue health, and logging.  Important: Permanent errors get masked can be a significant issue if not addressed proactively.",
+    "author": "Sneha Patel",
+    "tags": [
+      "sprint3",
+      "docs",
+      "performance",
+      "rabbitmq"
+    ],
+    "related_incidents": [],
+    "best_practices": [
+      "Implement robust error handling.",
+      "Add detailed logging.",
+      "Monitor key metrics."
+    ],
+    "common_mistakes": [
+      "Ignoring slow API response times.",
+      "Neglecting RabbitMQ queue health.",
+      "Insufficient logging."
+    ],
+    "created_at": "2024-06-20T09:00:00Z",
+    "source": "confluence_docs",
+    "company_id": "distributed_apps",
+    "sprint": 3,
+    "sprint_focus": "Scaling",
+    "bug_stage": "Permanent errors get masked"
+  },
+  {
+    "title": "Sprint 3 Planning - Scaling & Performance",
+    "doc_type": "meeting_notes",
+    "content": "Meeting notes about Sprint 3 Planning - Scaling and Performance. Key action items: Arjun to investigate API response times and RabbitMQ queue health. Priya to implement metrics dashboard. Rahul to add detailed logging.",
+    "attendees": [
+      "Rahul",
+      "Priya",
+      "Amit",
+      "Arjun"
+    ],
+    "action_items": [
+      "Arjun: Investigate API response times.",
+      "Priya: Implement metrics dashboard.",
+      "Rahul: Add detailed logging."
+    ],
+    "decisions_made": [
+      "Implement a metrics dashboard for API response times.",
+      "Monitor RabbitMQ queues for slow message processing."
+    ],
+    "bug_mentions": "Referenced Permanent errors get masked - a critical concern discussed during the meeting.",
+    "source": "google_docs",
+    "company_id": "distributed_apps",
+    "sprint": 3,
+    "sprint_focus": "Scaling",
+    "bug_stage": "Permanent errors get masked"
+  },
+  {
+    "commit_hash": "a1b2c3d4e5f678901234567890abcdef",
+    "author": "Rahul Sharma",
+    "message": "Fixed slow API response times and optimized database queries.",
+    "timestamp": "2024-08-15T10:30:00Z",
+    "files_changed": [
+      "src/app.py",
+      "config/settings.yaml",
+      "src/db_queries.py"
+    ],
+    "lessons_learned": "Dekha, support tickets mein badta tha jab API speed kam ho jaata tha.  Need to monitor this closely.",
+    "bug_related": "This directly caused the increase in Support tickets related to slow application response times.",
+    "source": "github_commits",
+    "company_id": "distributed_apps",
+    "sprint": 4,
+    "sprint_focus": "Performance issues",
+    "bug_stage": "Support tickets pile up"
+  },
+  {
+    "commit_hash": "fedcba9876543210fedcba9876543210",
+    "author": "Priya Sharma",
+    "message": "Added caching layer to reduce database load.",
+    "timestamp": "2024-08-16T09:00:00Z",
+    "files_changed": [
+      "src/app.py",
+      "src/cache_manager.py"
+    ],
+    "lessons_learned": "Caching helped, but still need to optimize queries further.  Support team still reporting issues.",
+    "bug_related": "Caching didn't fully resolve the root cause, which was the inefficient database queries.  Support tickets remained high.",
+    "source": "github_commits",
+    "company_id": "distributed_apps",
+    "sprint": 4,
+    "sprint_focus": "Performance issues",
+    "bug_stage": "Support tickets pile up"
+  },
+  {
+    "channel": "#engineering",
+    "thread_title": "Discussion about Performance issues - Yaar, speed kam ho raha hai!",
+    "messages": [
+      {
+        "author": "Rahul",
+        "timestamp": "2024-08-15T11:00:00Z",
+        "text": "Yaar, Performance issues pe kaam karna hai! API speed kam ho raha hai, sab support tickets mein aa rahe hai.",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Priya",
+        "timestamp": "2024-08-15T11:05:00Z",
+        "text": "Haan bhai, main dekh rahi hoon.  Dekho, database queries bhi slow hain.",
+        "reactions": [
+          "✅"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-08-15T11:10:00Z",
+        "text": "Theek hai, let me check the code and database queries.  Aapka code dekhun.",
+        "reactions": []
+      },
+      {
+        "author": "Neha",
+        "timestamp": "2024-08-15T11:15:00Z",
+        "text": "Arrey, ye issue production mein aayega kya?  Users ko bahut frustration hoga!",
+        "reactions": [
+          "😅"
+        ]
+      },
+      {
+        "author": "Rahul",
+        "timestamp": "2024-08-15T11:20:00Z",
+        "text": "Nahi yaar, testing mein catch kar lenge.  Caching layer try karte hain.",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-08-15T11:25:00Z",
+        "text": "Caching layer code complete. Let's deploy to staging.",
+        "reactions": [
+          "🚀"
+        ]
+      }
+    ],
+    "key_decisions": "Decision to implement a caching layer to address performance issues.",
+    "warnings": "Warning: Support tickets continue to pile up despite implementing caching. Root cause needs further investigation.",
+    "severity": "high",
+    "bug_clues": "Subtle hint: Support team is still complaining about slow response times, suggesting the problem isn't fully solved.",
+    "source": "slack_conversations",
+    "company_id": "distributed_apps",
+    "sprint": 4,
+    "sprint_focus": "Performance issues",
+    "bug_stage": "Support tickets pile up"
+  },
+  {
+    "ticket_id": "TECH-401",
+    "title": "Optimize API Performance and Reduce Database Load",
+    "description": "Detailed description of performance issues, including slow API response times and inefficient database queries.  Impact: Increased Support tickets related to application responsiveness.  Priority: Medium.",
+    "status": "in progress",
+    "priority": "medium",
+    "assignee": "Arjun Kumar",
+    "comments": [
+      "Added caching layer to API.",
+      "Refactored database queries for optimization."
+    ],
+    "sprint_points": 8,
+    "bug_connection": "Directly linked to the increase in Support tickets related to slow API response times and database query performance.",
+    "source": "jira_tickets",
+    "company_id": "distributed_apps",
+    "sprint": 4,
+    "sprint_focus": "Performance issues",
+    "bug_stage": "Support tickets pile up"
+  },
+  {
+    "title": "Performance Optimization - Sprint 4",
+    "content": "Markdown content about Performance issues, including recommendations for caching, database query optimization, and monitoring.  Key Metrics: API Response Time, Database Query Execution Time, Support Ticket Volume.",
+    "author": "Sneha Patel",
+    "tags": [
+      "sprint4",
+      "performance",
+      "optimization"
+    ],
+    "related_incidents": [
+      "TECH-401"
+    ],
+    "best_practices": [
+      "Implement Caching Layer",
+      "Optimize Database Queries",
+      "Monitor Key Performance Metrics"
+    ],
+    "common_mistakes": [
+      "Ignoring Database Query Performance",
+      "Lack of Caching Strategy"
+    ],
+    "created_at": "2024-08-20T09:00:00Z",
+    "source": "confluence_docs",
+    "company_id": "distributed_apps",
+    "sprint": 4,
+    "sprint_focus": "Performance issues",
+    "bug_stage": "Support tickets pile up"
+  },
+  {
+    "title": "Sprint 4 - Performance Improvement Plan",
+    "doc_type": "meeting_notes",
+    "content": "Meeting notes from the sprint planning meeting discussing the Performance issues and the plan to address them.  Attendees: Rahul, Priya, Amit, Arjun.",
+    "attendees": [
+      "Rahul",
+      "Priya",
+      "Amit",
+      "Arjun"
+    ],
+    "action_items": [
+      "Priya: Implement caching layer.",
+      "Arjun: Optimize database queries.",
+      "Rahul: Monitor performance metrics."
+    ],
+    "decisions_made": [
+      "Implement caching layer as a priority.",
+      "Allocate 8 sprint points to performance optimization."
+    ],
+    "bug_mentions": "Referenced the TECH-401 ticket regarding the performance issues.",
+    "source": "google_docs",
+    "company_id": "distributed_apps",
+    "sprint": 4,
+    "sprint_focus": "Performance issues",
+    "bug_stage": "Support tickets pile up"
+  },
+  {
+    "commit_hash": "abc123",
+    "author": "Rahul Sharma",
+    "message": "Fixed bug related to Finance audit reveals discrepancies investigation",
+    "timestamp": "2024-01-15T10:30:00Z",
+    "files_changed": [
+      "src/app.py",
+      "config/settings.yaml"
+    ],
+    "lessons_learned": "Found a subtle error in the reporting module, causing discrepancies.  Need to improve data validation.",
+    "bug_related": "This commit directly addresses the investigation into the Finance audit reveals discrepancies issue.  The bug was in the data aggregation logic.",
+    "source": "github_commits",
+    "company_id": "distributed_apps",
+    "sprint": 5,
+    "sprint_focus": "Investigation",
+    "bug_stage": "Finance audit reveals discrepancies"
+  },
+  {
+    "commit_hash": "def456",
+    "author": "Priya Sharma",
+    "message": "Added logging for Finance audit reveals discrepancies investigation",
+    "timestamp": "2024-01-16T14:00:00Z",
+    "files_changed": [
+      "src/logger.js",
+      "config/logging.yaml"
+    ],
+    "lessons_learned": "Increased logging helps in debugging and understanding the flow of data during the investigation.",
+    "bug_related": "More detailed logging will assist in tracking the source of the discrepancies identified during the Finance audit reveals discrepancies investigation.",
+    "source": "github_commits",
+    "company_id": "distributed_apps",
+    "sprint": 5,
+    "sprint_focus": "Investigation",
+    "bug_stage": "Finance audit reveals discrepancies"
+  },
+  {
+    "channel": "#engineering",
+    "thread_title": "Discussion about Investigation - Finance audit reveals discrepancies",
+    "messages": [
+      {
+        "author": "Rahul",
+        "timestamp": "2024-01-15T11:00:00Z",
+        "text": "Yaar, Investigation pe kaam karna hai. Finance audit reveals discrepancies - pata hai na?",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Priya",
+        "timestamp": "2024-01-15T11:05:00Z",
+        "text": "Haan bhai, main dekh rahi hoon.  Ye toh serious hai.",
+        "reactions": [
+          "✅"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-01-15T11:10:00Z",
+        "text": "Theek hai, let me check the code.  Maybe database query problem?",
+        "reactions": []
+      },
+      {
+        "author": "Neha",
+        "timestamp": "2024-01-15T11:15:00Z",
+        "text": "Arrey, ye issue production mein aayega kya?  Impact to check?",
+        "reactions": [
+          "😅"
+        ]
+      },
+      {
+        "author": "Rahul",
+        "timestamp": "2024-01-15T11:20:00Z",
+        "text": "Nahi yaar, testing mein catch kar lenge.  Let's isolate the problem.  Finance audit reveals discrepancies - need to be careful.",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-01-15T11:25:00Z",
+        "text": "I've started debugging the data pipeline.  Looks like a potential issue with the aggregation logic.",
+        "reactions": []
+      }
+    ],
+    "key_decisions": "Decided to focus on the data aggregation logic as the root cause of Finance audit reveals discrepancies.",
+    "warnings": "High priority - potential impact on financial reporting.  Finance audit reveals discrepancies - investigate thoroughly.",
+    "severity": "high",
+    "bug_clues": "Amit's observation about the aggregation logic is a key clue to the Finance audit reveals discrepancies issue.",
+    "source": "slack_conversations",
+    "company_id": "distributed_apps",
+    "sprint": 5,
+    "sprint_focus": "Investigation",
+    "bug_stage": "Finance audit reveals discrepancies"
+  },
+  {
+    "ticket_id": "TECH-501",
+    "title": "Investigate and Resolve Finance audit reveals discrepancies",
+    "description": "Detailed investigation into the discrepancies identified during the Finance audit reveals discrepancies.  Focus on data aggregation and validation.  Prioritize immediate resolution.",
+    "status": "in progress",
+    "priority": "critical",
+    "assignee": "Arjun Kumar",
+    "comments": [
+      "Initial investigation started.  Focus on data aggregation.",
+      "Added logging for debugging."
+    ],
+    "sprint_points": 8,
+    "bug_connection": "Directly related to the Finance audit reveals discrepancies - needs immediate attention.",
+    "source": "jira_tickets",
+    "company_id": "distributed_apps",
+    "sprint": 5,
+    "sprint_focus": "Investigation",
+    "bug_stage": "Finance audit reveals discrepancies"
+  },
+  {
+    "title": "Documentation - Finance audit reveals discrepancies Investigation",
+    "content": "This document outlines the investigation process for the Finance audit reveals discrepancies issue.  It includes steps for data validation, root cause analysis, and remediation.  Key focus areas: data aggregation, validation rules, and database queries.  Best practices: Implement robust data validation checks.",
+    "author": "Sneha Patel",
+    "tags": [
+      "sprint5",
+      "docs",
+      "finance",
+      "investigation"
+    ],
+    "related_incidents": [],
+    "best_practices": [
+      "Implement data validation checks",
+      "Use detailed logging"
+    ],
+    "common_mistakes": [
+      "Ignoring data validation",
+      "Insufficient logging"
+    ],
+    "created_at": "2024-01-15T12:00:00Z",
+    "source": "confluence_docs",
+    "company_id": "distributed_apps",
+    "sprint": 5,
+    "sprint_focus": "Investigation",
+    "bug_stage": "Finance audit reveals discrepancies"
+  },
+  {
+    "title": "Sprint 5 - Finance audit reveals discrepancies - Meeting Notes",
+    "doc_type": "meeting_notes",
+    "content": "Meeting held to discuss the Finance audit reveals discrepancies issue. Attendees: Rahul, Priya, Amit, Arjun. Key decisions: Prioritize investigation of data aggregation logic. Arjun to investigate database queries. Priya to add detailed logging. Action items: Arjun - Review database queries. Priya - Implement logging. Rahul - Coordinate with Finance team.",
+    "attendees": [
+      "Rahul",
+      "Priya",
+      "Amit",
+      "Arjun"
+    ],
+    "action_items": [
+      "Arjun - Review database queries",
+      "Priya - Implement logging"
+    ],
+    "decisions_made": [
+      "Prioritize investigation of data aggregation logic",
+      "Implement detailed logging"
+    ],
+    "bug_mentions": "The Finance audit reveals discrepancies issue is the primary focus.",
+    "source": "google_docs",
+    "company_id": "distributed_apps",
+    "sprint": 5,
+    "sprint_focus": "Investigation",
+    "bug_stage": "Finance audit reveals discrepancies"
+  },
+  {
+    "commit_hash": "a1b2c3d4e5f678901234567890abcdef",
+    "author": "Rahul Sharma",
+    "message": "Fix: Added fail-fast handling for permanent errors in the authentication service.  Implements the Fix and remediation strategy.",
+    "timestamp": "2024-01-15T10:30:00Z",
+    "files_changed": [
+      "src/auth/AuthenticationService.py",
+      "config/settings.yaml",
+      "tests/auth/AuthenticationServiceTest.py"
+    ],
+    "lessons_learned": "Dekho, fail-fast bahut important hai.  Agar permanent error hai, toh immediately stop karna chahiye, otherwise debugging bahut difficult ho sakta hai.",
+    "bug_related": "This commit directly addresses the 'Fix: Classify errors, fail-fast on permanent' requirement. We've added a check for permanent errors and are exiting immediately.",
+    "source": "github_commits",
+    "company_id": "distributed_apps",
+    "sprint": 6,
+    "sprint_focus": "Fix and remediation",
+    "bug_stage": "Fix: Classify errors, fail-fast on permanent"
+  },
+  {
+    "channel": "#engineering",
+    "thread_title": "Discussion about Fix and remediation - Authentication Service",
+    "messages": [
+      {
+        "author": "Rahul",
+        "timestamp": "2024-01-15T11:00:00Z",
+        "text": "Yaar, Fix and remediation pe kaam karna hai. Authentication service mein permanent errors a rahe the.  Dekho, bahut irritating tha!",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Priya",
+        "timestamp": "2024-01-15T11:05:00Z",
+        "text": "Haan bhai, main dekh rahi hoon.  Code mein kya changes hai?",
+        "reactions": [
+          "✅"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-01-15T11:10:00Z",
+        "text": "Theek hai, let me check the code and the logs.  Looks like the database connection was timing out.",
+        "reactions": []
+      },
+      {
+        "author": "Neha",
+        "timestamp": "2024-01-15T11:15:00Z",
+        "text": "Arrey, ye issue production mein aayega kya?  Users ko problem hoga?",
+        "reactions": [
+          "😅"
+        ]
+      },
+      {
+        "author": "Rahul",
+        "timestamp": "2024-01-15T11:20:00Z",
+        "text": "Nahi yaar, testing mein catch kar lenge. Fail-fast hai, toh production mein problem nahi hogi.",
+        "reactions": [
+          "👍"
+        ]
+      }
+    ],
+    "key_decisions": "Decision: Implement fail-fast handling for permanent errors in the authentication service to prevent cascading failures.",
+    "warnings": "Warning: If permanent errors are not handled immediately, they can lead to significant downtime and user impact.  Keep it fail-fast!",
+    "severity": "low",
+    "bug_clues": "The initial reports pointed to database connection timeouts, which are now being caught and handled aggressively.",
+    "source": "slack_conversations",
+    "company_id": "distributed_apps",
+    "sprint": 6,
+    "sprint_focus": "Fix and remediation",
+    "bug_stage": "Fix: Classify errors, fail-fast on permanent"
+  },
+  {
+    "ticket_id": "TECH-601",
+    "title": "Implement Fail-Fast Handling for Permanent Errors in Authentication Service",
+    "description": "Implement fail-fast handling in the AuthenticationService to immediately exit on permanent errors. This will prevent cascading failures and improve system stability.  This aligns with the Fix and remediation strategy.  Prioritize quick detection and resolution of permanent errors.",
+    "status": "done",
+    "priority": "medium",
+    "assignee": "Arjun Kumar",
+    "comments": [
+      "Update 1: Added fail-fast logic to AuthenticationService.",
+      "Update 2: Tested with various permanent error scenarios."
+    ],
+    "sprint_points": 5,
+    "bug_connection": "This ticket directly addresses the 'Fix: Classify errors, fail-fast on permanent' requirement.",
+    "source": "jira_tickets",
+    "company_id": "distributed_apps",
+    "sprint": 6,
+    "sprint_focus": "Fix and remediation",
+    "bug_stage": "Fix: Classify errors, fail-fast on permanent"
+  },
+  {
+    "title": "Documentation for Fix and Remediation - Authentication Service",
+    "content": "## Fix and Remediation - Authentication Service\n\n**Goal:** To minimize the impact of permanent errors in the authentication service by implementing immediate fail-fast handling.\n\n**Strategy:**  Any time a permanent error is detected (e.g., database connection timeout, invalid credentials), the service should immediately exit, preventing further processing and potential cascading failures. This is crucial for maintaining system stability and user experience.\n\n**Best Practices:**\n*   Implement robust error handling.\n*   Prioritize immediate detection and resolution of permanent errors.\n*   Document all error handling logic.\n\n**Common Mistakes:**\n*   Ignoring permanent errors.\n*   Allowing errors to propagate through the system.\n*   Not having a clear strategy for handling failures.",
+    "author": "Sneha Patel",
+    "tags": [
+      "sprint6",
+      "docs",
+      "authentication"
+    ],
+    "related_incidents": [],
+    "best_practices": [
+      "Implement robust error handling",
+      "Prioritize immediate detection and resolution"
+    ],
+    "common_mistakes": [
+      "Ignoring permanent errors",
+      "Allowing errors to propagate"
+    ],
+    "created_at": "2024-01-20T09:00:00Z",
+    "source": "confluence_docs",
+    "company_id": "distributed_apps",
+    "sprint": 6,
+    "sprint_focus": "Fix and remediation",
+    "bug_stage": "Fix: Classify errors, fail-fast on permanent"
+  },
+  {
+    "title": "Sprint 6 Planning - Authentication Service Fix",
+    "doc_type": "meeting_notes",
+    "content": "Meeting notes from the sprint 6 planning meeting regarding the Authentication Service fix. We discussed the importance of fail-fast handling for permanent errors. Arjun Kumar is responsible for implementing the changes.\n\n**Attendees:** Rahul, Priya, Amit, Arjun\n\n**Action Items:**\n*   Arjun: Implement fail-fast handling in AuthenticationService.\n*   Rahul: Review Arjun's code.\n\n**Decisions Made:**\n*   Decision: Implement fail-fast logic for authentication service.\n*   Decision: Prioritize immediate error detection and resolution.\n\n**Bug Mentions:** Reference to the 'Fix: Classify errors, fail-fast on permanent' requirement.",
+    "attendees": [
+      "Rahul",
+      "Priya",
+      "Amit",
+      "Arjun"
+    ],
+    "action_items": [
+      "Arjun: Implement fail-fast handling"
+    ],
+    "decisions_made": [
+      "Decision: Implement fail-fast logic"
+    ],
+    "bug_mentions": "The discussion centered around the 'Fix: Classify errors, fail-fast on permanent' strategy.",
+    "source": "google_docs",
+    "company_id": "distributed_apps",
+    "sprint": 6,
+    "sprint_focus": "Fix and remediation",
+    "bug_stage": "Fix: Classify errors, fail-fast on permanent"
+  }
+]

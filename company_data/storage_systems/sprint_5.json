@@ -1,0 +1,191 @@
+{
+  "github_commits": [
+    {
+      "commit_hash": "abc123",
+      "author": "Rahul Sharma",
+      "message": "Fix: Investigating Logs gone issue - Initial investigation steps",
+      "timestamp": "2024-01-15T10:30:00Z",
+      "files_changed": [
+        "src/app.py",
+        "config/settings.yaml",
+        "logs/sample.log"
+      ],
+      "lessons_learned": "Logs are disappearing in production. Need to deeply investigate Lambda function behavior and DynamoDB access.",
+      "bug_related": "This commit addresses the initial investigation into the Logs are gone, violation discovered issue.  We're focusing on Lambda and DynamoDB interactions.",
+      "source": "github_commits",
+      "company_id": "storage_systems",
+      "sprint": 5,
+      "sprint_focus": "Investigation",
+      "bug_stage": "Logs are gone, violation discovered"
+    },
+    {
+      "commit_hash": "def456",
+      "author": "Priya Sharma",
+      "message": "Refactor: DynamoDB Query Optimization - Logs tracking",
+      "timestamp": "2024-01-16T09:15:00Z",
+      "files_changed": [
+        "dynamodb_queries.py",
+        "config/settings.yaml"
+      ],
+      "lessons_learned": "DynamoDB queries weren't consistently logging all events.  Need to ensure proper logging configuration.",
+      "bug_related": "This addresses the Logs are gone, violation discovered issue by improving DynamoDB logging.",
+      "source": "github_commits",
+      "company_id": "storage_systems",
+      "sprint": 5,
+      "sprint_focus": "Investigation",
+      "bug_stage": "Logs are gone, violation discovered"
+    }
+  ],
+  "slack_conversations": [
+    {
+      "channel": "#engineering",
+      "thread_title": "Discussion about Investigation - Logs issue!",
+      "messages": [
+        {
+          "author": "Rahul",
+          "timestamp": "2024-01-15T11:00:00Z",
+          "text": "Yaar, Investigation pe kaam karna hai. Logs toh gaone hue hain, production mein problem hai!",
+          "reactions": [
+            "👍"
+          ]
+        },
+        {
+          "author": "Priya",
+          "timestamp": "2024-01-15T11:05:00Z",
+          "text": "Haan bhai, main dekh rahi hoon. DynamoDB mein kya ho raha hai check kar rahi hoon.",
+          "reactions": [
+            "✅"
+          ]
+        },
+        {
+          "author": "Amit",
+          "timestamp": "2024-01-15T11:10:00Z",
+          "text": "Theek hai, let me check the code.  Maybe Lambda timeout?",
+          "reactions": []
+        },
+        {
+          "author": "Neha",
+          "timestamp": "2024-01-15T11:15:00Z",
+          "text": "Arrey, ye issue production mein aayega kya?  Customers will be complaining!",
+          "reactions": [
+            "😅"
+          ]
+        },
+        {
+          "author": "Rahul",
+          "timestamp": "2024-01-15T11:20:00Z",
+          "text": "Nahi yaar, testing mein catch kar lenge.  Let's add more logging in Lambda.",
+          "reactions": [
+            "👍"
+          ]
+        },
+        {
+          "author": "Amit",
+          "timestamp": "2024-01-15T11:25:00Z",
+          "text": "Good idea Rahul.  Let's add Lambda logging.",
+          "reactions": []
+        }
+      ],
+      "key_decisions": "Decided to add more logging within the Lambda function to track DynamoDB interactions.",
+      "warnings": "Critical: Logs are disappearing in production. Potential security and operational issues.",
+      "severity": "high",
+      "bug_clues": "Rahul mentioned Lambda timeout as a possible cause – investigating Lambda configuration.",
+      "source": "slack_conversations",
+      "company_id": "storage_systems",
+      "sprint": 5,
+      "sprint_focus": "Investigation",
+      "bug_stage": "Logs are gone, violation discovered"
+    }
+  ],
+  "jira_tickets": [
+    {
+      "ticket_id": "TECH-501",
+      "title": "Implement Investigation - Logs Issue",
+      "description": "Detailed investigation into the Logs are gone issue.  Focus on Lambda function behavior, DynamoDB access, and potential configuration errors.  Prioritize identifying the root cause and implementing a solution to prevent recurrence.  Includes detailed steps for debugging Lambda functions and DynamoDB queries.",
+      "status": "in progress",
+      "priority": "high",
+      "assignee": "Arjun Kumar",
+      "comments": [
+        "Update 1: Initial investigation started. Added Lambda logging.",
+        "Update 2: Investigating DynamoDB query patterns."
+      ],
+      "sprint_points": 8,
+      "bug_connection": "Directly related to the Logs are gone, violation discovered issue.  Root cause analysis and remediation are key.",
+      "source": "jira_tickets",
+      "company_id": "storage_systems",
+      "sprint": 5,
+      "sprint_focus": "Investigation",
+      "bug_stage": "Logs are gone, violation discovered"
+    }
+  ],
+  "confluence_docs": [
+    {
+      "title": "Investigation - Logs Disappearance - CloudStore Systems",
+      "content": "## Investigation - Logs Disappearance\n\n**Problem:** We've identified a critical issue where logs are disappearing from our Lambda functions, potentially leading to operational and security vulnerabilities.\n\n**Root Cause (Possible):**  Incorrect Lambda configuration, DynamoDB query patterns, or potential timeouts.\n\n**Steps for Investigation:**\n1.  Examine Lambda function logs (if any).\n2.  Review DynamoDB query patterns.\n3.  Check Lambda function timeout settings.\n4.  Validate IAM permissions.\n\n**Best Practices:**\n*   Always implement comprehensive logging in Lambda functions.\n*   Regularly review and optimize DynamoDB queries.\n*   Set appropriate Lambda function timeout settings.\n\n**Common Mistakes:**\n*   Lack of logging in Lambda functions.\n*   Inefficient DynamoDB queries.\n*   Ignoring Lambda timeout settings.",
+      "author": "Sneha Patel",
+      "tags": [
+        "sprint5",
+        "docs",
+        "logs",
+        "lambda",
+        "dynamodb"
+      ],
+      "related_incidents": [],
+      "best_practices": [
+        "Implement comprehensive logging",
+        "Optimize DynamoDB queries",
+        "Set Lambda timeouts"
+      ],
+      "common_mistakes": [
+        "Missing logging",
+        "Inefficient queries",
+        "Timeout issues"
+      ],
+      "created_at": "2024-01-15T10:00:00Z",
+      "source": "confluence_docs",
+      "company_id": "storage_systems",
+      "sprint": 5,
+      "sprint_focus": "Investigation",
+      "bug_stage": "Logs are gone, violation discovered"
+    }
+  ],
+  "google_docs": [
+    {
+      "title": "Sprint 5 Planning - Investigation - Logs Issue",
+      "doc_type": "meeting_notes",
+      "content": "## Sprint 5 Planning - Investigation - Logs Issue\n\n**Attendees:** Rahul, Priya, Amit, Arjun\n\n**Action Items:**\n*   Rahul: Add more logging to Lambda function.\n*   Priya: Investigate DynamoDB query patterns.\n*   Arjun: Review Lambda configuration and timeout settings.\n\n**Decisions Made:**\n*   Prioritize investigation into Logs are gone issue.\n*   Implement additional logging in Lambda functions.\n\n**Bug Mentions:** Logs are disappearing in production – critical issue!",
+      "attendees": [
+        "Rahul",
+        "Priya",
+        "Amit",
+        "Arjun"
+      ],
+      "action_items": [
+        "Rahul - Add logging",
+        "Priya - Investigate queries",
+        "Arjun - Review config"
+      ],
+      "decisions_made": [
+        "Prioritize Logs investigation",
+        "Implement Lambda logging"
+      ],
+      "bug_mentions": "Logs are disappearing - high priority!",
+      "source": "google_docs",
+      "company_id": "storage_systems",
+      "sprint": 5,
+      "sprint_focus": "Investigation",
+      "bug_stage": "Logs are gone, violation discovered"
+    }
+  ],
+  "_validation": {
+    "is_valid": true,
+    "overall_score": 8,
+    "bug_progression_score": 8,
+    "cohesion_score": 8,
+    "realism_score": 8,
+    "hinglish_score": 8,
+    "technical_score": 8,
+    "feedback": "Data structure is good",
+    "suggestions": []
+  }
+}

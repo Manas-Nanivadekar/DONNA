@@ -1,0 +1,970 @@
+[
+  {
+    "commit_hash": "a1b2c3d4e5f6789012345678",
+    "author": "Rahul Sharma",
+    "message": "Initial architecture setup - S3 bucket creation & Lambda function design.",
+    "timestamp": "2024-01-15T10:30:00Z",
+    "files_changed": [
+      "src/app.py",
+      "config/settings.yaml",
+      "infrastructure/s3_config.json"
+    ],
+    "lessons_learned": "Learned that DynamoDB scaling needs careful consideration for peak loads. Also, need to explore cheaper S3 storage tiers.",
+    "bug_related": "This initial architecture sets the stage for optimizing storage costs through lifecycle policies.  Need to prioritize this during next sprint.",
+    "source": "github_commits",
+    "company_id": "storage_systems",
+    "sprint": 1,
+    "sprint_focus": "Initial architecture",
+    "bug_stage": "Set lifecycle policy for cost savings"
+  },
+  {
+    "commit_hash": "e5f678901234567890123456",
+    "author": "Priya Sharma",
+    "message": "Added basic React component structure for UI.",
+    "timestamp": "2024-01-16T09:00:00Z",
+    "files_changed": [
+      "src/components/App.js",
+      "src/App.css"
+    ],
+    "lessons_learned": "React component structure is a good starting point, but needs further refinement for scalability.",
+    "bug_related": "The UI needs to be optimized for performance, which relates to overall cost efficiency.",
+    "source": "github_commits",
+    "company_id": "storage_systems",
+    "sprint": 1,
+    "sprint_focus": "Initial architecture",
+    "bug_stage": "Set lifecycle policy for cost savings"
+  },
+  {
+    "channel": "#engineering",
+    "thread_title": "Discussion about Initial architecture & Cost Savings",
+    "messages": [
+      {
+        "author": "Rahul",
+        "timestamp": "2024-01-15T11:00:00Z",
+        "text": "Yaar, Initial architecture pe kaam karna hai!  S3 buckets banaya, Lambda function bhi design kiya hai.  Dekho kya hai?",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Priya",
+        "timestamp": "2024-01-15T11:05:00Z",
+        "text": "Haan bhai, main dekh rahi hoon!  React components bhi ban rahi hoon.  Dekh, UI design ka kya hai?",
+        "reactions": [
+          "✅"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-01-15T11:10:00Z",
+        "text": "Theek hai, let me check the code and see if everything is working as expected.  Dekho, DynamoDB mein problem hai, scaling ka kya hai?",
+        "reactions": []
+      },
+      {
+        "author": "Neha",
+        "timestamp": "2024-01-15T11:15:00Z",
+        "text": "Arrey, ye issue production mein aayega kya?  Cost bhi dekhna hai, kabhi kabhi!  Set lifecycle policy for cost savings...  yeh bhi dekhna hai.",
+        "reactions": [
+          "😅"
+        ]
+      },
+      {
+        "author": "Rahul",
+        "timestamp": "2024-01-15T11:20:00Z",
+        "text": "Nahi yaar, testing mein catch kar lenge.  Cost optimization is important, but first let's get the core functionality working.  Set lifecycle policy for cost savings - good idea!",
+        "reactions": [
+          "👍"
+        ]
+      }
+    ],
+    "key_decisions": "Decision to prioritize S3 bucket setup and Lambda function design.  Also discussed the importance of cost optimization through lifecycle policies.",
+    "warnings": "Warning:  Need to proactively address cost savings through S3 lifecycle policies.  Potential for overspending if not managed carefully.",
+    "severity": "low",
+    "bug_clues": "Discussion about DynamoDB scaling and the need to consider cost savings.  Subtle hint about the importance of S3 lifecycle policies.",
+    "source": "slack_conversations",
+    "company_id": "storage_systems",
+    "sprint": 1,
+    "sprint_focus": "Initial architecture",
+    "bug_stage": "Set lifecycle policy for cost savings"
+  },
+  {
+    "ticket_id": "TECH-101",
+    "title": "Implement Initial architecture - S3 & Lambda",
+    "description": "Develop the initial architecture, including S3 bucket creation, Lambda function design, and basic React component setup.  Focus on a scalable and cost-effective solution.  Start with a simple S3 lifecycle policy configuration.",
+    "status": "done",
+    "priority": "medium",
+    "assignee": "Arjun Kumar",
+    "comments": [
+      "Update 1:  Initial setup complete.  Waiting for feedback.",
+      "Update 2:  Confirmation received - looks good!"
+    ],
+    "sprint_points": 5,
+    "bug_connection": "The initial architecture lays the foundation for future cost optimization efforts, specifically through the implementation of S3 lifecycle policies.",
+    "source": "jira_tickets",
+    "company_id": "storage_systems",
+    "sprint": 1,
+    "sprint_focus": "Initial architecture",
+    "bug_stage": "Set lifecycle policy for cost savings"
+  },
+  {
+    "title": "Sprint 1: Initial Architecture - S3, Lambda & React",
+    "content": "Markdown content detailing the initial architecture design.  Includes S3 bucket configuration, Lambda function design, and basic React component structure.  Highlights the importance of scalability and cost optimization.  Initial focus: Setting up S3 lifecycle policies to automatically archive older data.",
+    "author": "Sneha Patel",
+    "tags": [
+      "sprint1",
+      "docs",
+      "architecture"
+    ],
+    "related_incidents": [],
+    "best_practices": [
+      "Use appropriate S3 storage classes based on data access patterns.",
+      "Regularly review and adjust S3 lifecycle policies."
+    ],
+    "common_mistakes": [
+      "Not configuring S3 lifecycle policies, leading to unnecessary storage costs.",
+      "Over-provisioning Lambda function resources."
+    ],
+    "created_at": "2024-01-20T09:00:00Z",
+    "source": "confluence_docs",
+    "company_id": "storage_systems",
+    "sprint": 1,
+    "sprint_focus": "Initial architecture",
+    "bug_stage": "Set lifecycle policy for cost savings"
+  },
+  {
+    "title": "Sprint 1 Planning & Cost Optimization Discussion",
+    "doc_type": "meeting_notes",
+    "content": "Meeting notes from the Sprint 1 planning meeting.  Discussed the initial architecture, including S3, Lambda, and React.  Prioritized setting up S3 lifecycle policies for cost savings. Action items:  Rahul to research S3 lifecycle policy options. Priya to start working on React component structure. Amit to investigate DynamoDB scaling.",
+    "attendees": [
+      "Rahul",
+      "Priya",
+      "Amit",
+      "Sneha"
+    ],
+    "action_items": [
+      "Rahul - Research S3 lifecycle policy options.",
+      "Priya - Begin React component structure design."
+    ],
+    "decisions_made": [
+      "Decision to prioritize S3 lifecycle policy implementation.",
+      "Decision to start with a simple React component structure."
+    ],
+    "bug_mentions": "Reference to the potential for cost overruns if S3 lifecycle policies are not configured correctly.  Subtle reminder about cost savings.",
+    "source": "google_docs",
+    "company_id": "storage_systems",
+    "sprint": 1,
+    "sprint_focus": "Initial architecture",
+    "bug_stage": "Set lifecycle policy for cost savings"
+  },
+  {
+    "commit_hash": "a1b2c3d4e5",
+    "author": "Rahul Sharma",
+    "message": "Implemented Core features - Initial version",
+    "timestamp": "2024-03-15T10:30:00Z",
+    "files_changed": [
+      "src/app.py",
+      "config/settings.yaml",
+      "src/components/CoreFeature.jsx"
+    ],
+    "lessons_learned": "Need to properly document the audit log policy - seems like it's impacting our approach.",
+    "bug_related": "This commit directly relates to the Policy covers audit logs by mistake - we're potentially over-complicating things.",
+    "source": "github_commits",
+    "company_id": "storage_systems",
+    "sprint": 2,
+    "sprint_focus": "Core features",
+    "bug_stage": "Policy covers audit logs by mistake"
+  },
+  {
+    "commit_hash": "f7e8d9a0b1",
+    "author": "Priya Sharma",
+    "message": "Added unit tests for Core features",
+    "timestamp": "2024-03-15T11:45:00Z",
+    "files_changed": [
+      "src/app.py",
+      "tests/core_features.test.js"
+    ],
+    "lessons_learned": "Testing is crucial, but let's ensure the audit log requirements aren't unnecessarily restrictive.",
+    "bug_related": "The audit log policy is causing friction in the testing process.",
+    "source": "github_commits",
+    "company_id": "storage_systems",
+    "sprint": 2,
+    "sprint_focus": "Core features",
+    "bug_stage": "Policy covers audit logs by mistake"
+  },
+  {
+    "channel": "#engineering",
+    "thread_title": "Discussion about Core features - Yaar, Core features pe kaam karna hai",
+    "messages": [
+      {
+        "author": "Rahul",
+        "timestamp": "2024-03-15T11:00:00Z",
+        "text": "Yaar, Core features pe kaam karna hai.  Speed hai!",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Priya",
+        "timestamp": "2024-03-15T11:05:00Z",
+        "text": "Haan bhai, main dekh rahi hoon.  Progress karna hai.",
+        "reactions": [
+          "✅"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-03-15T11:10:00Z",
+        "text": "Theek hai, let me check the code and see if this audit log thing is causing too much trouble.",
+        "reactions": []
+      },
+      {
+        "author": "Neha",
+        "timestamp": "2024-03-15T11:15:00Z",
+        "text": "Arrey, ye issue production mein aayega kya?  If we don't handle it properly?",
+        "reactions": [
+          "😅"
+        ]
+      },
+      {
+        "author": "Rahul",
+        "timestamp": "2024-03-15T11:20:00Z",
+        "text": "Nahi yaar, testing mein catch kar lenge.  Let's not over-engineer it for the initial release.",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-03-15T11:25:00Z",
+        "text": "I'm seeing a potential conflict with the audit log policy.  Need to discuss with legal.",
+        "reactions": [
+          "🤔"
+        ]
+      }
+    ],
+    "key_decisions": "Decided to proceed with Core features, but with caution regarding the audit log policy.",
+    "warnings": "Warning: The audit log policy seems to be creating unnecessary complexity. Need to investigate.",
+    "severity": "medium",
+    "bug_clues": "Neha's concern about production impact highlights a potential problem with the audit log policy.",
+    "source": "slack_conversations",
+    "company_id": "storage_systems",
+    "sprint": 2,
+    "sprint_focus": "Core features",
+    "bug_stage": "Policy covers audit logs by mistake"
+  },
+  {
+    "ticket_id": "TECH-201",
+    "title": "Implement Core features - Initial Version",
+    "description": "Develop the initial version of the Core features, focusing on functionality.  Must adhere to the audit log policy.",
+    "status": "In Progress",
+    "priority": "High",
+    "assignee": "Arjun Kumar",
+    "comments": [
+      "Arjun: Started working on the Core features.  Need clarification on the audit log requirements.",
+      "Rahul: Let me know if you have any questions about the policy."
+    ],
+    "sprint_points": 8,
+    "bug_connection": "The audit log policy is a key factor in the development effort and potential roadblocks.",
+    "source": "jira_tickets",
+    "company_id": "storage_systems",
+    "sprint": 2,
+    "sprint_focus": "Core features",
+    "bug_stage": "Policy covers audit logs by mistake"
+  },
+  {
+    "title": "Documentation for Core features - Sprint 2",
+    "content": "Markdown content outlining the Core features and their implementation.  Includes diagrams and technical specifications.  Note:  The audit log policy is a critical consideration during development.",
+    "author": "Sneha Patel",
+    "tags": [
+      "sprint2",
+      "docs",
+      "audit_log"
+    ],
+    "related_incidents": [],
+    "best_practices": [
+      "Follow coding standards",
+      "Thorough testing"
+    ],
+    "common_mistakes": [
+      "Over-complicating the audit log implementation",
+      "Ignoring the security requirements"
+    ],
+    "created_at": "2024-03-20T09:00:00Z",
+    "source": "confluence_docs",
+    "company_id": "storage_systems",
+    "sprint": 2,
+    "sprint_focus": "Core features",
+    "bug_stage": "Policy covers audit logs by mistake"
+  },
+  {
+    "title": "Sprint 2 Planning Meeting - Core features",
+    "doc_type": "meeting_notes",
+    "content": "Meeting notes from the Sprint 2 planning session.  Discussed the Core features roadmap and potential challenges, especially concerning the audit log policy.",
+    "attendees": [
+      "Rahul",
+      "Priya",
+      "Amit",
+      "Arjun"
+    ],
+    "action_items": [
+      "Rahul to schedule a meeting with legal to discuss the audit log policy.",
+      "Arjun to start working on the initial implementation."
+    ],
+    "decisions_made": [
+      "Decided to prioritize the Core features but with a focus on minimizing the impact of the audit log policy.",
+      "Allocated 8 sprint points for the initial implementation."
+    ],
+    "bug_mentions": "The audit log policy was a recurring topic of discussion and a key concern.",
+    "source": "google_docs",
+    "company_id": "storage_systems",
+    "sprint": 2,
+    "sprint_focus": "Core features",
+    "bug_stage": "Policy covers audit logs by mistake"
+  },
+  {
+    "commit_hash": "a1b2c3d4e5",
+    "author": "Rahul Sharma",
+    "message": "Scaling performance improvements - Lambda function optimizations",
+    "timestamp": "2024-06-15T10:30:00Z",
+    "files_changed": [
+      "src/app.py",
+      "config/settings.yaml",
+      "tests/unit_tests.py"
+    ],
+    "lessons_learned": "Yaar, debugging Lambda functions is a whole different level of pain.  Nobody really checks these things, right?",
+    "bug_related": "This scaling work is happening, but nobody's actually *seeing* if it's making a difference.  It's like, we're building a faster car, but nobody's driving it.",
+    "source": "github_commits",
+    "company_id": "storage_systems",
+    "sprint": 3,
+    "sprint_focus": "Scaling",
+    "bug_stage": "No one notices for months"
+  },
+  {
+    "commit_hash": "f67890abc1",
+    "author": "Priya Sharma",
+    "message": "DynamoDB indexing - added GSI for query patterns",
+    "timestamp": "2024-06-16T09:15:00Z",
+    "files_changed": [
+      "config/settings.yaml",
+      "src/app.py"
+    ],
+    "lessons_learned": "Need to document these DynamoDB changes better.  It’s going to be a mess if nobody knows what’s going on.",
+    "bug_related": "This scaling is a good start, but we need to monitor it.  Otherwise, this whole thing will just disappear into the void.",
+    "source": "github_commits",
+    "company_id": "storage_systems",
+    "sprint": 3,
+    "sprint_focus": "Scaling",
+    "bug_stage": "No one notices for months"
+  },
+  {
+    "channel": "#engineering",
+    "thread_title": "Discussion about Scaling - Performance",
+    "messages": [
+      {
+        "author": "Rahul",
+        "timestamp": "2024-06-15T11:00:00Z",
+        "text": "Yaar, Scaling pe kaam karna hai.  Server response time badh raha hai, especially during peak hours.",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Priya",
+        "timestamp": "2024-06-15T11:05:00Z",
+        "text": "Haan bhai, main dekh rahi hoon.  Dekh rahi hoon, DynamoDB mein index laga rahi hoon.",
+        "reactions": [
+          "✅"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-06-15T11:10:00Z",
+        "text": "Theek hai, let me check the code.  Maybe it’s the S3 bucket configuration?",
+        "reactions": []
+      },
+      {
+        "author": "Neha",
+        "timestamp": "2024-06-15T11:15:00Z",
+        "text": "Arrey, ye issue production mein aayega kya?  If nobody notices, it's fine, no?",
+        "reactions": [
+          "😅"
+        ]
+      },
+      {
+        "author": "Rahul",
+        "timestamp": "2024-06-15T11:20:00Z",
+        "text": "Nahi yaar, testing mein catch kar lenge.  Testing mein dekhna hai, production mein toh koi problem nahi hoga.",
+        "reactions": [
+          "👍"
+        ]
+      }
+    ],
+    "key_decisions": "Decided to optimize Lambda functions and DynamoDB indexing for scaling.",
+    "warnings": "Warning:  Scaling work is happening, but nobody seems to be actively monitoring its impact.  Potential for unnoticed issues.",
+    "severity": "low",
+    "bug_clues": "The casual attitude towards monitoring suggests a potential for significant issues to go unnoticed.",
+    "source": "slack_conversations",
+    "company_id": "storage_systems",
+    "sprint": 3,
+    "sprint_focus": "Scaling",
+    "bug_stage": "No one notices for months"
+  },
+  {
+    "ticket_id": "TECH-301",
+    "title": "Implement Scaling - Lambda & DynamoDB",
+    "description": "Implement scaling improvements for the CloudStore Systems platform. Focus on optimizing Lambda function performance and DynamoDB indexing to handle increased load. Monitor performance metrics.",
+    "status": "done",
+    "priority": "medium",
+    "assignee": "Arjun Kumar",
+    "comments": [
+      "Update 1 - Lambda optimizations complete.",
+      "Update 2 - DynamoDB indexing implemented."
+    ],
+    "sprint_points": 5,
+    "bug_connection": "The lack of proactive monitoring creates a risk of undetected performance degradation.  This scaling work needs continuous observation.",
+    "source": "jira_tickets",
+    "company_id": "storage_systems",
+    "sprint": 3,
+    "sprint_focus": "Scaling",
+    "bug_stage": "No one notices for months"
+  },
+  {
+    "title": "Documentation for Scaling - CloudStore Systems",
+    "content": "Markdown content about Scaling. This document details the scaling improvements implemented in Sprint 3.  Includes details on Lambda function optimizations and DynamoDB indexing.  Requires ongoing monitoring.",
+    "author": "Sneha Patel",
+    "tags": [
+      "sprint3",
+      "docs",
+      "performance"
+    ],
+    "related_incidents": [],
+    "best_practices": [
+      "Implement proactive monitoring of key performance indicators."
+    ],
+    "common_mistakes": [
+      "Failure to actively monitor the impact of scaling changes."
+    ],
+    "created_at": "2024-06-20T09:00:00Z",
+    "source": "confluence_docs",
+    "company_id": "storage_systems",
+    "sprint": 3,
+    "sprint_focus": "Scaling",
+    "bug_stage": "No one notices for months"
+  },
+  {
+    "title": "Sprint 3 Planning - Scaling - CloudStore Systems",
+    "doc_type": "meeting_notes",
+    "content": "Meeting notes from Sprint 3 planning. Discussed scaling improvements for CloudStore Systems. Key decisions: Lambda optimization, DynamoDB indexing. Action items: Arjun to monitor Lambda performance, Priya to monitor DynamoDB query latency.",
+    "attendees": [
+      "Rahul",
+      "Priya",
+      "Amit"
+    ],
+    "action_items": [
+      "Arjun - Monitor Lambda performance",
+      "Priya - Monitor DynamoDB query latency"
+    ],
+    "decisions_made": [
+      "Implement Lambda function optimizations",
+      "Implement DynamoDB indexing"
+    ],
+    "bug_mentions": "Potential for unnoticed performance issues due to lack of active monitoring.",
+    "source": "google_docs",
+    "company_id": "storage_systems",
+    "sprint": 3,
+    "sprint_focus": "Scaling",
+    "bug_stage": "No one notices for months"
+  },
+  {
+    "commit_hash": "a1b2c3d4e5",
+    "author": "Rahul Sharma",
+    "message": "Fixed slow Lambda function response times and optimized DynamoDB queries.",
+    "timestamp": "2024-08-15T10:30:00Z",
+    "files_changed": [
+      "src/app.py",
+      "config/settings.yaml",
+      "lambda/process_data.py"
+    ],
+    "lessons_learned": "Learned that inefficient DynamoDB queries were a major bottleneck.  Need better indexing strategy.",
+    "bug_related": "This directly addresses the performance issues and the need for improved log retention to assist with compliance audits.",
+    "source": "github_commits",
+    "company_id": "storage_systems",
+    "sprint": 4,
+    "sprint_focus": "Performance issues",
+    "bug_stage": "Compliance audit requests old logs"
+  },
+  {
+    "commit_hash": "f7g8h9i0j1",
+    "author": "Priya Sharma",
+    "message": "Added caching layer to reduce Lambda invocations.",
+    "timestamp": "2024-08-16T09:15:00Z",
+    "files_changed": [
+      "src/app.py",
+      "lambda/cache_data.py"
+    ],
+    "lessons_learned": "Caching significantly improved response times, but needs monitoring to prevent excessive memory usage.",
+    "bug_related": "Helps with the performance, and the increased logging will be valuable for the compliance audit.",
+    "source": "github_commits",
+    "company_id": "storage_systems",
+    "sprint": 4,
+    "sprint_focus": "Performance issues",
+    "bug_stage": "Compliance audit requests old logs"
+  },
+  {
+    "channel": "#engineering",
+    "thread_title": "Discussion about Performance issues - S3 & Lambda",
+    "messages": [
+      {
+        "author": "Rahul",
+        "timestamp": "2024-08-15T11:00:00Z",
+        "text": "Yaar, Performance issues pe kaam karna hai!  S3 aur Lambda mein problem hai, bata raha hoon.",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Priya",
+        "timestamp": "2024-08-15T11:05:00Z",
+        "text": "Haan bhai, main dekh rahi hoon.  Lambda function mein delay hai.",
+        "reactions": [
+          "✅"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-08-15T11:10:00Z",
+        "text": "Theek hai, let me check the code and the Lambda logs.",
+        "reactions": []
+      },
+      {
+        "author": "Neha",
+        "timestamp": "2024-08-15T11:15:00Z",
+        "text": "Arrey, ye issue production mein aayega kya?  Customers ko irritate hoga.",
+        "reactions": [
+          "😅"
+        ]
+      },
+      {
+        "author": "Rahul",
+        "timestamp": "2024-08-15T11:20:00Z",
+        "text": "Nahi yaar, testing mein catch kar lenge.  Code ka beta testing karenge.",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-08-15T11:25:00Z",
+        "text": "I've added caching, seems to be helping a bit.  Still need to investigate the S3 latency.",
+        "reactions": []
+      }
+    ],
+    "key_decisions": "Decided to focus on Lambda function optimization and S3 latency.",
+    "warnings": "Warning:  Old logs might be missing key information for compliance audits.",
+    "severity": "medium",
+    "bug_clues": "Someone mentioned needing to check old logs for compliance.",
+    "source": "slack_conversations",
+    "company_id": "storage_systems",
+    "sprint": 4,
+    "sprint_focus": "Performance issues",
+    "bug_stage": "Compliance audit requests old logs"
+  },
+  {
+    "ticket_id": "TECH-401",
+    "title": "Optimize Lambda Function Performance & Log Retention",
+    "description": "Investigate and resolve performance bottlenecks in the Lambda functions. Implement a better strategy for log retention to facilitate compliance audit requests.  Need to ensure sufficient log data is available.",
+    "status": "in progress",
+    "priority": "high",
+    "assignee": "Arjun Kumar",
+    "comments": [
+      "Initial investigation shows slow response times.",
+      "Adding caching layer to Lambda function."
+    ],
+    "sprint_points": 8,
+    "bug_connection": "Directly related to the performance issues and the need for accurate historical logs for compliance audits.",
+    "source": "jira_tickets",
+    "company_id": "storage_systems",
+    "sprint": 4,
+    "sprint_focus": "Performance issues",
+    "bug_stage": "Compliance audit requests old logs"
+  },
+  {
+    "title": "Performance Optimization - Sprint 4",
+    "content": "Markdown content detailing the performance optimization strategy, including Lambda function tuning, S3 access patterns, and log retention policies.  Emphasis on collecting sufficient data for compliance audits.",
+    "author": "Sneha Patel",
+    "tags": [
+      "sprint4",
+      "performance",
+      "compliance"
+    ],
+    "related_incidents": [],
+    "best_practices": [
+      "Optimize Lambda function code.",
+      "Use efficient DynamoDB queries.",
+      "Implement robust logging."
+    ],
+    "common_mistakes": [
+      "Insufficient log retention.",
+      "Inefficient DynamoDB queries.",
+      "Lack of proper indexing."
+    ],
+    "created_at": "2024-08-20T09:00:00Z",
+    "source": "confluence_docs",
+    "company_id": "storage_systems",
+    "sprint": 4,
+    "sprint_focus": "Performance issues",
+    "bug_stage": "Compliance audit requests old logs"
+  },
+  {
+    "title": "Sprint 4 Planning - Performance & Compliance",
+    "doc_type": "meeting_notes",
+    "content": "Meeting notes from the sprint planning meeting, outlining tasks, timelines, and key decisions.  Included a discussion about the importance of log retention for compliance.",
+    "attendees": [
+      "Rahul",
+      "Priya",
+      "Amit",
+      "Sneha"
+    ],
+    "action_items": [
+      "Arjun to investigate Lambda function performance.",
+      "Sneha to update Confluence documentation."
+    ],
+    "decisions_made": [
+      "Prioritize Lambda function optimization.",
+      "Implement a log retention policy."
+    ],
+    "bug_mentions": "Specifically referenced the need to ensure adequate log data is available for compliance audits.",
+    "source": "google_docs",
+    "company_id": "storage_systems",
+    "sprint": 4,
+    "sprint_focus": "Performance issues",
+    "bug_stage": "Compliance audit requests old logs"
+  },
+  {
+    "commit_hash": "abc123",
+    "author": "Rahul Sharma",
+    "message": "Fix: Investigating Logs gone issue - Initial investigation steps",
+    "timestamp": "2024-01-15T10:30:00Z",
+    "files_changed": [
+      "src/app.py",
+      "config/settings.yaml",
+      "logs/sample.log"
+    ],
+    "lessons_learned": "Logs are disappearing in production. Need to deeply investigate Lambda function behavior and DynamoDB access.",
+    "bug_related": "This commit addresses the initial investigation into the Logs are gone, violation discovered issue.  We're focusing on Lambda and DynamoDB interactions.",
+    "source": "github_commits",
+    "company_id": "storage_systems",
+    "sprint": 5,
+    "sprint_focus": "Investigation",
+    "bug_stage": "Logs are gone, violation discovered"
+  },
+  {
+    "commit_hash": "def456",
+    "author": "Priya Sharma",
+    "message": "Refactor: DynamoDB Query Optimization - Logs tracking",
+    "timestamp": "2024-01-16T09:15:00Z",
+    "files_changed": [
+      "dynamodb_queries.py",
+      "config/settings.yaml"
+    ],
+    "lessons_learned": "DynamoDB queries weren't consistently logging all events.  Need to ensure proper logging configuration.",
+    "bug_related": "This addresses the Logs are gone, violation discovered issue by improving DynamoDB logging.",
+    "source": "github_commits",
+    "company_id": "storage_systems",
+    "sprint": 5,
+    "sprint_focus": "Investigation",
+    "bug_stage": "Logs are gone, violation discovered"
+  },
+  {
+    "channel": "#engineering",
+    "thread_title": "Discussion about Investigation - Logs issue!",
+    "messages": [
+      {
+        "author": "Rahul",
+        "timestamp": "2024-01-15T11:00:00Z",
+        "text": "Yaar, Investigation pe kaam karna hai. Logs toh gaone hue hain, production mein problem hai!",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Priya",
+        "timestamp": "2024-01-15T11:05:00Z",
+        "text": "Haan bhai, main dekh rahi hoon. DynamoDB mein kya ho raha hai check kar rahi hoon.",
+        "reactions": [
+          "✅"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-01-15T11:10:00Z",
+        "text": "Theek hai, let me check the code.  Maybe Lambda timeout?",
+        "reactions": []
+      },
+      {
+        "author": "Neha",
+        "timestamp": "2024-01-15T11:15:00Z",
+        "text": "Arrey, ye issue production mein aayega kya?  Customers will be complaining!",
+        "reactions": [
+          "😅"
+        ]
+      },
+      {
+        "author": "Rahul",
+        "timestamp": "2024-01-15T11:20:00Z",
+        "text": "Nahi yaar, testing mein catch kar lenge.  Let's add more logging in Lambda.",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-01-15T11:25:00Z",
+        "text": "Good idea Rahul.  Let's add Lambda logging.",
+        "reactions": []
+      }
+    ],
+    "key_decisions": "Decided to add more logging within the Lambda function to track DynamoDB interactions.",
+    "warnings": "Critical: Logs are disappearing in production. Potential security and operational issues.",
+    "severity": "high",
+    "bug_clues": "Rahul mentioned Lambda timeout as a possible cause – investigating Lambda configuration.",
+    "source": "slack_conversations",
+    "company_id": "storage_systems",
+    "sprint": 5,
+    "sprint_focus": "Investigation",
+    "bug_stage": "Logs are gone, violation discovered"
+  },
+  {
+    "ticket_id": "TECH-501",
+    "title": "Implement Investigation - Logs Issue",
+    "description": "Detailed investigation into the Logs are gone issue.  Focus on Lambda function behavior, DynamoDB access, and potential configuration errors.  Prioritize identifying the root cause and implementing a solution to prevent recurrence.  Includes detailed steps for debugging Lambda functions and DynamoDB queries.",
+    "status": "in progress",
+    "priority": "high",
+    "assignee": "Arjun Kumar",
+    "comments": [
+      "Update 1: Initial investigation started. Added Lambda logging.",
+      "Update 2: Investigating DynamoDB query patterns."
+    ],
+    "sprint_points": 8,
+    "bug_connection": "Directly related to the Logs are gone, violation discovered issue.  Root cause analysis and remediation are key.",
+    "source": "jira_tickets",
+    "company_id": "storage_systems",
+    "sprint": 5,
+    "sprint_focus": "Investigation",
+    "bug_stage": "Logs are gone, violation discovered"
+  },
+  {
+    "title": "Investigation - Logs Disappearance - CloudStore Systems",
+    "content": "## Investigation - Logs Disappearance\n\n**Problem:** We've identified a critical issue where logs are disappearing from our Lambda functions, potentially leading to operational and security vulnerabilities.\n\n**Root Cause (Possible):**  Incorrect Lambda configuration, DynamoDB query patterns, or potential timeouts.\n\n**Steps for Investigation:**\n1.  Examine Lambda function logs (if any).\n2.  Review DynamoDB query patterns.\n3.  Check Lambda function timeout settings.\n4.  Validate IAM permissions.\n\n**Best Practices:**\n*   Always implement comprehensive logging in Lambda functions.\n*   Regularly review and optimize DynamoDB queries.\n*   Set appropriate Lambda function timeout settings.\n\n**Common Mistakes:**\n*   Lack of logging in Lambda functions.\n*   Inefficient DynamoDB queries.\n*   Ignoring Lambda timeout settings.",
+    "author": "Sneha Patel",
+    "tags": [
+      "sprint5",
+      "docs",
+      "logs",
+      "lambda",
+      "dynamodb"
+    ],
+    "related_incidents": [],
+    "best_practices": [
+      "Implement comprehensive logging",
+      "Optimize DynamoDB queries",
+      "Set Lambda timeouts"
+    ],
+    "common_mistakes": [
+      "Missing logging",
+      "Inefficient queries",
+      "Timeout issues"
+    ],
+    "created_at": "2024-01-15T10:00:00Z",
+    "source": "confluence_docs",
+    "company_id": "storage_systems",
+    "sprint": 5,
+    "sprint_focus": "Investigation",
+    "bug_stage": "Logs are gone, violation discovered"
+  },
+  {
+    "title": "Sprint 5 Planning - Investigation - Logs Issue",
+    "doc_type": "meeting_notes",
+    "content": "## Sprint 5 Planning - Investigation - Logs Issue\n\n**Attendees:** Rahul, Priya, Amit, Arjun\n\n**Action Items:**\n*   Rahul: Add more logging to Lambda function.\n*   Priya: Investigate DynamoDB query patterns.\n*   Arjun: Review Lambda configuration and timeout settings.\n\n**Decisions Made:**\n*   Prioritize investigation into Logs are gone issue.\n*   Implement additional logging in Lambda functions.\n\n**Bug Mentions:** Logs are disappearing in production – critical issue!",
+    "attendees": [
+      "Rahul",
+      "Priya",
+      "Amit",
+      "Arjun"
+    ],
+    "action_items": [
+      "Rahul - Add logging",
+      "Priya - Investigate queries",
+      "Arjun - Review config"
+    ],
+    "decisions_made": [
+      "Prioritize Logs investigation",
+      "Implement Lambda logging"
+    ],
+    "bug_mentions": "Logs are disappearing - high priority!",
+    "source": "google_docs",
+    "company_id": "storage_systems",
+    "sprint": 5,
+    "sprint_focus": "Investigation",
+    "bug_stage": "Logs are gone, violation discovered"
+  },
+  {
+    "commit_hash": "a1b2c3d4e5f678901234567890abcdef",
+    "author": "Rahul Sharma",
+    "message": "Fix: Implemented separate retention policies for S3 buckets. Addressing production issue.",
+    "timestamp": "2024-01-15T10:30:00Z",
+    "files_changed": [
+      "src/app.py",
+      "config/settings.yaml",
+      "infrastructure/s3_configs/"
+    ],
+    "lessons_learned": "Learned that explicit configuration is key for retention policies. Need clearer documentation.",
+    "bug_related": "Directly addresses the bug regarding inconsistent retention times across environments.",
+    "source": "github_commits",
+    "company_id": "storage_systems",
+    "sprint": 6,
+    "sprint_focus": "Fix and remediation",
+    "bug_stage": "Fix: Separate retention policies"
+  },
+  {
+    "commit_hash": "cdef1234567890abcdef1234567890abcdef",
+    "author": "Priya Sharma",
+    "message": "Minor adjustments to the retention policy implementation. Added logging.",
+    "timestamp": "2024-01-16T09:15:00Z",
+    "files_changed": [
+      "src/app.py",
+      "logs/retention.log"
+    ],
+    "lessons_learned": "Logging is crucial for debugging retention issues.  Need to ensure logs are structured properly.",
+    "bug_related": "Further refinement of the fix, improving monitoring capabilities.",
+    "source": "github_commits",
+    "company_id": "storage_systems",
+    "sprint": 6,
+    "sprint_focus": "Fix and remediation",
+    "bug_stage": "Fix: Separate retention policies"
+  },
+  {
+    "channel": "#engineering",
+    "thread_title": "Discussion about Fix and remediation - Retention Policy Chaos!",
+    "messages": [
+      {
+        "author": "Rahul",
+        "timestamp": "2024-01-15T11:00:00Z",
+        "text": "Yaar, Fix and remediation pe kaam karna hai.  S3 mein data retention bahut confusion hai, bhai!  It's a total mess.",
+        "reactions": [
+          "👍"
+        ]
+      },
+      {
+        "author": "Priya",
+        "timestamp": "2024-01-15T11:05:00Z",
+        "text": "Haan bhai, main dekh rahi hoon.  Ye retention policy toh seriously, it's a disaster!",
+        "reactions": [
+          "✅"
+        ]
+      },
+      {
+        "author": "Amit",
+        "timestamp": "2024-01-15T11:10:00Z",
+        "text": "Theek hai, let me check the code and see how it's configured.  Let's try to get a handle on this.",
+        "reactions": []
+      },
+      {
+        "author": "Neha",
+        "timestamp": "2024-01-15T11:15:00Z",
+        "text": "Arrey, ye issue production mein aayega kya?  If we mess this up, it'll be a huge problem.  Let's be careful!",
+        "reactions": [
+          "😅"
+        ]
+      },
+      {
+        "author": "Rahul",
+        "timestamp": "2024-01-15T11:20:00Z",
+        "text": "Nahi yaar, testing mein catch kar lenge.  We'll test everything thoroughly before deploying.  Testing, testing, testing!",
+        "reactions": [
+          "👍"
+        ]
+      }
+    ],
+    "key_decisions": "Decided to implement separate retention policies for S3 buckets based on data sensitivity.",
+    "warnings": "Warning: Potential for data loss if retention policies are not correctly configured.  Double-check everything!",
+    "severity": "medium",
+    "bug_clues": "Rahul mentioned 'data retention bahut confusion' – a key indicator of the problem.",
+    "source": "slack_conversations",
+    "company_id": "storage_systems",
+    "sprint": 6,
+    "sprint_focus": "Fix and remediation",
+    "bug_stage": "Fix: Separate retention policies"
+  },
+  {
+    "ticket_id": "TECH-601",
+    "title": "Implement Fix and remediation - S3 Retention Policy",
+    "description": "Implement separate retention policies for S3 buckets to address inconsistencies and potential data loss.  Focus on clarity and auditability.  Requires detailed documentation and thorough testing.",
+    "status": "done",
+    "priority": "medium",
+    "assignee": "Arjun Kumar",
+    "comments": [
+      "Update 1: Initial setup of retention policies complete.  Waiting for testing results.",
+      "Update 2: Testing confirms no data loss.  Documentation updated."
+    ],
+    "sprint_points": 5,
+    "bug_connection": "Directly related to the bug impacting data retention across environments.",
+    "source": "jira_tickets",
+    "company_id": "storage_systems",
+    "sprint": 6,
+    "sprint_focus": "Fix and remediation",
+    "bug_stage": "Fix: Separate retention policies"
+  },
+  {
+    "title": "S3 Retention Policy Implementation - Sprint 6",
+    "content": "## S3 Retention Policy Implementation\n\nThis document outlines the steps taken to implement separate retention policies for S3 buckets.  The goal is to ensure data is retained for the correct duration based on its sensitivity.  See also: [Link to S3 Configuration Guide]",
+    "author": "Sneha Patel",
+    "tags": [
+      "sprint6",
+      "docs",
+      "s3",
+      "retention"
+    ],
+    "related_incidents": [
+      "TECH-601"
+    ],
+    "best_practices": [
+      "Implement granular retention policies.",
+      "Regularly audit retention configurations."
+    ],
+    "common_mistakes": [
+      "Overly broad retention policies.",
+      "Lack of documentation."
+    ],
+    "created_at": "2024-01-20T09:00:00Z",
+    "source": "confluence_docs",
+    "company_id": "storage_systems",
+    "sprint": 6,
+    "sprint_focus": "Fix and remediation",
+    "bug_stage": "Fix: Separate retention policies"
+  },
+  {
+    "title": "Sprint 6 Planning - Retention Policy Fix",
+    "doc_type": "meeting_notes",
+    "content": "## Sprint 6 Planning - Retention Policy Fix\n\n**Attendees:** Rahul, Priya, Amit, Arjun\n\n**Action Items:**\n* Rahul: Finalize S3 configuration changes.\n* Priya: Create documentation for the new retention policies.\n* Arjun: Conduct thorough testing.\n\n**Decisions Made:**\n* Separate retention policies will be implemented for different S3 buckets based on data sensitivity.\n* Documentation will be created to ensure proper configuration and maintenance.\n\n**Bug Mentions:** Reference to TECH-601 – S3 Retention Policy Bug",
+    "attendees": [
+      "Rahul",
+      "Priya",
+      "Amit"
+    ],
+    "action_items": [
+      "Rahul: Finalize S3 configuration changes.",
+      "Priya: Create documentation for the new retention policies."
+    ],
+    "decisions_made": [
+      "Separate retention policies will be implemented for different S3 buckets based on data sensitivity.",
+      "Documentation will be created to ensure proper configuration and maintenance."
+    ],
+    "bug_mentions": "Reference to TECH-601 – S3 Retention Policy Bug",
+    "source": "google_docs",
+    "company_id": "storage_systems",
+    "sprint": 6,
+    "sprint_focus": "Fix and remediation",
+    "bug_stage": "Fix: Separate retention policies"
+  }
+]

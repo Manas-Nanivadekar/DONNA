@@ -1,0 +1,186 @@
+{
+  "github_commits": [
+    {
+      "commit_hash": "abc123",
+      "author": "Rahul Sharma",
+      "message": "Fixed bug related to Finance audit reveals discrepancies investigation",
+      "timestamp": "2024-01-15T10:30:00Z",
+      "files_changed": [
+        "src/app.py",
+        "config/settings.yaml"
+      ],
+      "lessons_learned": "Found a subtle error in the reporting module, causing discrepancies.  Need to improve data validation.",
+      "bug_related": "This commit directly addresses the investigation into the Finance audit reveals discrepancies issue.  The bug was in the data aggregation logic.",
+      "source": "github_commits",
+      "company_id": "distributed_apps",
+      "sprint": 5,
+      "sprint_focus": "Investigation",
+      "bug_stage": "Finance audit reveals discrepancies"
+    },
+    {
+      "commit_hash": "def456",
+      "author": "Priya Sharma",
+      "message": "Added logging for Finance audit reveals discrepancies investigation",
+      "timestamp": "2024-01-16T14:00:00Z",
+      "files_changed": [
+        "src/logger.js",
+        "config/logging.yaml"
+      ],
+      "lessons_learned": "Increased logging helps in debugging and understanding the flow of data during the investigation.",
+      "bug_related": "More detailed logging will assist in tracking the source of the discrepancies identified during the Finance audit reveals discrepancies investigation.",
+      "source": "github_commits",
+      "company_id": "distributed_apps",
+      "sprint": 5,
+      "sprint_focus": "Investigation",
+      "bug_stage": "Finance audit reveals discrepancies"
+    }
+  ],
+  "slack_conversations": [
+    {
+      "channel": "#engineering",
+      "thread_title": "Discussion about Investigation - Finance audit reveals discrepancies",
+      "messages": [
+        {
+          "author": "Rahul",
+          "timestamp": "2024-01-15T11:00:00Z",
+          "text": "Yaar, Investigation pe kaam karna hai. Finance audit reveals discrepancies - pata hai na?",
+          "reactions": [
+            "👍"
+          ]
+        },
+        {
+          "author": "Priya",
+          "timestamp": "2024-01-15T11:05:00Z",
+          "text": "Haan bhai, main dekh rahi hoon.  Ye toh serious hai.",
+          "reactions": [
+            "✅"
+          ]
+        },
+        {
+          "author": "Amit",
+          "timestamp": "2024-01-15T11:10:00Z",
+          "text": "Theek hai, let me check the code.  Maybe database query problem?",
+          "reactions": []
+        },
+        {
+          "author": "Neha",
+          "timestamp": "2024-01-15T11:15:00Z",
+          "text": "Arrey, ye issue production mein aayega kya?  Impact to check?",
+          "reactions": [
+            "😅"
+          ]
+        },
+        {
+          "author": "Rahul",
+          "timestamp": "2024-01-15T11:20:00Z",
+          "text": "Nahi yaar, testing mein catch kar lenge.  Let's isolate the problem.  Finance audit reveals discrepancies - need to be careful.",
+          "reactions": [
+            "👍"
+          ]
+        },
+        {
+          "author": "Amit",
+          "timestamp": "2024-01-15T11:25:00Z",
+          "text": "I've started debugging the data pipeline.  Looks like a potential issue with the aggregation logic.",
+          "reactions": []
+        }
+      ],
+      "key_decisions": "Decided to focus on the data aggregation logic as the root cause of Finance audit reveals discrepancies.",
+      "warnings": "High priority - potential impact on financial reporting.  Finance audit reveals discrepancies - investigate thoroughly.",
+      "severity": "high",
+      "bug_clues": "Amit's observation about the aggregation logic is a key clue to the Finance audit reveals discrepancies issue.",
+      "source": "slack_conversations",
+      "company_id": "distributed_apps",
+      "sprint": 5,
+      "sprint_focus": "Investigation",
+      "bug_stage": "Finance audit reveals discrepancies"
+    }
+  ],
+  "jira_tickets": [
+    {
+      "ticket_id": "TECH-501",
+      "title": "Investigate and Resolve Finance audit reveals discrepancies",
+      "description": "Detailed investigation into the discrepancies identified during the Finance audit reveals discrepancies.  Focus on data aggregation and validation.  Prioritize immediate resolution.",
+      "status": "in progress",
+      "priority": "critical",
+      "assignee": "Arjun Kumar",
+      "comments": [
+        "Initial investigation started.  Focus on data aggregation.",
+        "Added logging for debugging."
+      ],
+      "sprint_points": 8,
+      "bug_connection": "Directly related to the Finance audit reveals discrepancies - needs immediate attention.",
+      "source": "jira_tickets",
+      "company_id": "distributed_apps",
+      "sprint": 5,
+      "sprint_focus": "Investigation",
+      "bug_stage": "Finance audit reveals discrepancies"
+    }
+  ],
+  "confluence_docs": [
+    {
+      "title": "Documentation - Finance audit reveals discrepancies Investigation",
+      "content": "This document outlines the investigation process for the Finance audit reveals discrepancies issue.  It includes steps for data validation, root cause analysis, and remediation.  Key focus areas: data aggregation, validation rules, and database queries.  Best practices: Implement robust data validation checks.",
+      "author": "Sneha Patel",
+      "tags": [
+        "sprint5",
+        "docs",
+        "finance",
+        "investigation"
+      ],
+      "related_incidents": [],
+      "best_practices": [
+        "Implement data validation checks",
+        "Use detailed logging"
+      ],
+      "common_mistakes": [
+        "Ignoring data validation",
+        "Insufficient logging"
+      ],
+      "created_at": "2024-01-15T12:00:00Z",
+      "source": "confluence_docs",
+      "company_id": "distributed_apps",
+      "sprint": 5,
+      "sprint_focus": "Investigation",
+      "bug_stage": "Finance audit reveals discrepancies"
+    }
+  ],
+  "google_docs": [
+    {
+      "title": "Sprint 5 - Finance audit reveals discrepancies - Meeting Notes",
+      "doc_type": "meeting_notes",
+      "content": "Meeting held to discuss the Finance audit reveals discrepancies issue. Attendees: Rahul, Priya, Amit, Arjun. Key decisions: Prioritize investigation of data aggregation logic. Arjun to investigate database queries. Priya to add detailed logging. Action items: Arjun - Review database queries. Priya - Implement logging. Rahul - Coordinate with Finance team.",
+      "attendees": [
+        "Rahul",
+        "Priya",
+        "Amit",
+        "Arjun"
+      ],
+      "action_items": [
+        "Arjun - Review database queries",
+        "Priya - Implement logging"
+      ],
+      "decisions_made": [
+        "Prioritize investigation of data aggregation logic",
+        "Implement detailed logging"
+      ],
+      "bug_mentions": "The Finance audit reveals discrepancies issue is the primary focus.",
+      "source": "google_docs",
+      "company_id": "distributed_apps",
+      "sprint": 5,
+      "sprint_focus": "Investigation",
+      "bug_stage": "Finance audit reveals discrepancies"
+    }
+  ],
+  "_validation": {
+    "is_valid": true,
+    "overall_score": 8,
+    "bug_progression_score": 8,
+    "cohesion_score": 8,
+    "realism_score": 8,
+    "hinglish_score": 8,
+    "technical_score": 8,
+    "feedback": "Data structure is good",
+    "suggestions": []
+  }
+}
