@@ -205,7 +205,7 @@ export default function Home() {
                         <a href="#solution" className="hover:text-white transition-colors">Solution</a>
                         <a href="#memory" className="hover:text-white transition-colors">Memory</a>
                     </div>
-                    <button className="hidden md:block rounded-full bg-white px-5 py-2 text-sm font-medium text-black hover:bg-neutral-200 transition-colors">
+                    <button onClick={() => router.push('/case')} className="hidden md:block rounded-full bg-white px-5 py-2 text-sm font-medium text-black hover:bg-neutral-200 transition-colors">
                         Get Started
                     </button>
                 </div>
@@ -262,7 +262,7 @@ export default function Home() {
                         className="mt-10 flex flex-col items-center justify-center gap-4 md:flex-row"
                     >
                         <button className="group relative flex items-center gap-2 overflow-hidden rounded-full bg-white px-8 py-3 text-sm font-semibold text-black transition-all hover:bg-neutral-200 hover:pr-6 hover:pl-10">
-                            <span>Try DONNA</span>
+                            <a href="#memory">Try DONNA</a>
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </button>
                         <button className="rounded-full border border-white/10 px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-white/5">
@@ -410,13 +410,13 @@ export default function Home() {
                                 Real examples of how DONNA structures disparate events into actionable insights.
                             </p>
                         </div>
-                        <button className="flex items-center gap-2 text-sm font-medium text-white hover:text-neutral-300 transition-colors">
+                        <button onClick={() => router.push("/case")} className="flex items-center gap-2 text-sm font-medium text-white hover:text-neutral-300 transition-colors">
                             Explore more <ChevronRight className="h-4 w-4" />
                         </button>
                     </div>
 
                     <div className="grid gap-6 md:grid-cols-3">
-                        {cases.map((c, i) => (
+                        {cases.slice(0, 3).map((c, i) => (
                             <motion.div
                                 key={c.company_id}
                                 initial={{ opacity: 0, y: 20 }}

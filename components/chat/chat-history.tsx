@@ -68,32 +68,34 @@ export function ChatHistory({
     return (
         <div className={cn("flex flex-col gap-4", className)}>
             <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-sm font-semibold">
-                    <History className="h-4 w-4" />
+                <div className="flex items-center gap-2 text-sm font-semibold text-white">
+                    <History className="h-4 w-4 text-blue-400" />
                     <span>Chat History</span>
                 </div>
-                <Button
-                    variant="ghost"
-                    size="sm"
+                <button
                     onClick={onNewChat}
-                    className="h-8"
+                    className="flex h-8 items-center gap-1 rounded-lg px-3 text-sm font-medium text-white/80 transition-all hover:bg-white/5"
                 >
-                    <Plus className="h-4 w-4 mr-1" />
+                    <Plus className="h-4 w-4" />
                     New
-                </Button>
+                </button>
             </div>
 
             {loading ? (
-                <div className="text-sm text-muted-foreground text-center py-4">
-                    Loading...
+                <div className="flex items-center justify-center py-8">
+                    <div className="flex gap-1">
+                        <span className="h-2 w-2 animate-bounce rounded-full bg-white/60" style={{ animationDelay: "0ms" }} />
+                        <span className="h-2 w-2 animate-bounce rounded-full bg-white/60" style={{ animationDelay: "150ms" }} />
+                        <span className="h-2 w-2 animate-bounce rounded-full bg-white/60" style={{ animationDelay: "300ms" }} />
+                    </div>
                 </div>
             ) : error ? (
-                <div className="text-sm text-destructive text-center py-4">
-                    {error}
+                <div className="rounded-lg border border-white/10 bg-neutral-900/50 p-4 text-center backdrop-blur-sm">
+                    <p className="text-sm text-red-400">{error}</p>
                 </div>
             ) : sessions.length === 0 ? (
-                <div className="text-sm text-muted-foreground text-center py-4">
-                    No previous chats
+                <div className="rounded-lg border border-white/10 bg-neutral-900/50 p-4 text-center backdrop-blur-sm">
+                    <p className="text-sm text-white/60">No previous chats</p>
                 </div>
             ) : (
                 <div className="space-y-2">
@@ -102,20 +104,20 @@ export function ChatHistory({
                             key={session.session_id}
                             onClick={() => onLoadSession(session.session_id)}
                             className={cn(
-                                "w-full text-left p-3 rounded-lg border transition-colors",
+                                "w-full text-left p-3 rounded-lg border transition-all backdrop-blur-sm",
                                 session.session_id === currentSessionId
-                                    ? "bg-primary/10 border-primary"
-                                    : "bg-background border-border hover:bg-accent"
+                                    ? "bg-blue-500/20 border-blue-500/30"
+                                    : "bg-neutral-900/50 border-white/10 hover:border-white/20 hover:bg-neutral-900"
                             )}
                         >
-                            <div className="text-sm font-medium truncate">
+                            <div className="text-sm font-medium truncate text-white/90">
                                 {getFirstUserMessage(session)}
                             </div>
                             <div className="flex items-center justify-between mt-1">
-                                <span className="text-xs text-muted-foreground">
+                                <span className="text-xs text-white/50">
                                     {session.messages.length} messages
                                 </span>
-                                <span className="text-xs text-muted-foreground">
+                                <span className="text-xs text-white/50">
                                     {formatDate(session.updated_at)}
                                 </span>
                             </div>

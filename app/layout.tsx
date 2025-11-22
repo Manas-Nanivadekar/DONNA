@@ -4,7 +4,7 @@ import { Toaster } from "sonner";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
-  title: "DONNA - AI Case Study Assistant",
+  title: "Donna",
   description:
     "AI-powered case study assistant for Autoscaling Tech, Database Solutions, and more.",
 };

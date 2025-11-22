@@ -2,8 +2,6 @@
 
 import { useState, KeyboardEvent } from "react";
 import { Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 
 interface ChatInputProps {
     onSend: (message: string) => void;
@@ -34,18 +32,26 @@ export function ChatInput({ onSend, disabled, placeholder, value, onChange }: Ch
     };
 
     return (
-        <div className="flex items-center gap-2 p-4 border-t border-border bg-background">
-            <Input
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder={placeholder || "Ask DONNA a question..."}
-                disabled={disabled}
-                className="flex-1"
-            />
-            <Button onClick={handleSend} disabled={disabled || !inputValue.trim()} size="icon">
-                <Send className="h-4 w-4" />
-            </Button>
+        <div className="border-t border-white/10 bg-black p-4">
+            <div className="mx-auto max-w-3xl">
+                <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-neutral-900/50 px-4 py-3 backdrop-blur-sm transition-all focus-within:border-white/20 focus-within:bg-neutral-900">
+                    <input
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                        placeholder={placeholder || "Ask DONNA a question..."}
+                        disabled={disabled}
+                        className="flex-1 bg-transparent text-sm text-white placeholder:text-white/40 outline-none"
+                    />
+                    <button
+                        onClick={handleSend}
+                        disabled={disabled || !inputValue.trim()}
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500/20 text-blue-300 transition-all hover:bg-blue-500/30 disabled:opacity-50 disabled:cursor-not-allowed ring-1 ring-blue-500/30"
+                    >
+                        <Send className="h-4 w-4" />
+                    </button>
+                </div>
+            </div>
         </div>
     );
 }
