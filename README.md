@@ -1,162 +1,351 @@
-# AI SDK Python Streaming Preview
+# DONNA
 
-This template demonstrates the usage of [Data Stream Protocol](https://sdk.vercel.ai/docs/ai-sdk-ui/stream-protocol#data-stream-protocol) to stream chat completions from a Python endpoint ([FastAPI](https://fastapi.tiangolo.com)) and display them using the [useChat](https://sdk.vercel.ai/docs/ai-sdk-ui/chatbot#chatbot) hook in your Next.js application.
+**Distributed Organizational Neural Network Assistant**
 
-## Deploy your own
+<div align="center">
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel-labs/ai-sdk-preview-python-streaming)
+*Transforming scattered organizational history into actionable institutional knowledge*
 
-## How to use
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?style=flat-square&logo=fastapi)](https://fastapi.tiangolo.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python)](https://www.python.org/)
 
-Run [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+</div>
 
-```bash
-npx create-next-app --example https://github.com/vercel-labs/ai-sdk-preview-python-streaming ai-sdk-preview-python-streaming-example
+---
+
+## 🎯 The Problem
+
+Organizations suffer from **institutional amnesia**:
+
+- **Repeated Mistakes**: Teams lack visibility into past failures and repeat them
+- **Knowledge Loss**: When employees leave, critical context and reasoning disappears  
+- **Slow Onboarding**: New hires can't understand why systems exist or how they evolved
+- **Context Fragmentation**: Critical knowledge is scattered across Slack, GitHub, Jira, Confluence, and Docs
+
+The question "Has anyone tried this before?" echoes through Slack channels, met with silence or vague memories.
+
+---
+
+## 💡 The Solution
+
+**DONNA** is an AI-powered institutional memory assistant that captures, contextualizes, and surfaces historical organizational knowledge through conversational exploration of real case studies.
+
+### How DONNA Helps
+
+- **Learns from History**: Analyzes codebases, docs, tickets, and communication tools to understand what worked, what failed, and why
+- **Understands Previous Work**: Builds a contextual map of past projects, showing how systems evolved and why certain choices were made
+- **Warns Before Mistakes**: Proactively flags decisions similar to past failures with context, impact, and proven solutions
+- **Preserves Organizational Wisdom**: Knowledge persists beyond employee tenure—new hires learn from years of experience from day one
+
+---
+
+## ✨ Features
+
+### 📚 Case-Based Learning
+Explore four interactive case workspaces, each representing a real company's historical data including Slack discussions, GitHub commits, Jira tickets, Confluence documentation, and Google Docs notes.
+
+### 💬 Conversational AI
+Ask DONNA anything about organizational history and receive contextual, AI-generated answers using the company's data as reference.
+
+### 🎨 Polished Interface
+- Elegant black-and-white aesthetic
+- Smooth animations via Framer Motion
+- Mobile-responsive design
+- Collapsible context panels
+- Smart query suggestions
+
+### 🧠 Intelligent Context
+- **Vector Search**: Semantic understanding via Qdrant vector database
+- **Separate Chat Threads**: Each case maintains its own workspace memory
+- **Streamed Responses**: Real-time AI generation for fluid interaction
+
+---
+
+## 🏗️ Architecture
+
+```
+┌────────────────────────────────────────────────────────────┐
+│                        DONNA Frontend                      │
+│              Next.js 15 + TypeScript + Tailwind            │
+│                                                            │
+│  ┌─────────────┐  ┌──────────────┐  ┌─────────────────┐    │
+│  │   Landing   │  │     Case     │  │   Chat Thread   │    │
+│  │    Page     │──│   Workspace  │──│   (per case)    │    │
+│  └─────────────┘  └──────────────┘  └─────────────────┘    │
+└────────────────────────────────────────────────────────────┘
+                              │
+                              │ HTTP/REST
+                              ▼
+┌────────────────────────────────────────────────────────────┐
+│                      DONNA Backend                         │
+│                  FastAPI + Python 3.12                     │
+│                                                            │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
+│  │   MongoDB    │  │    Qdrant    │  │    Ollama    │      │
+│  │  Metadata &  │  │Vector Search │  │  Embeddings  │      │
+│  │  User Data   │  │ (localhost)  │  │(nomic-embed) │      │
+│  └──────────────┘  └──────────────┘  └──────────────┘      │
+│                                                            │
+│                    ┌──────────────┐                        │
+│                    │Google Gemini │                        │
+│                    │  AI Engine   │                        │
+│                    └──────────────┘                        │
+└────────────────────────────────────────────────────────────┘
 ```
 
-```bash
-yarn create next-app --example https://github.com/vercel-labs/ai-sdk-preview-python-streaming ai-sdk-preview-python-streaming-example
+### Tech Stack
+
+**Frontend**
+- Next.js 15 (App Router)
+- React 18 + TypeScript
+- Tailwind CSS
+- Framer Motion
+- AI SDK (Vercel)
+
+**Backend**
+- FastAPI
+- Python 3.12
+- MongoDB (company data, metadata)
+- Qdrant (vector database)
+- Ollama (nomic-embed-text embeddings)
+- Google Gemini AI (chat generation)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Ensure you have the following installed and running:
+- Node.js 18+
+- Python 3.12+
+- MongoDB instance
+- Qdrant vector database (localhost:6333)
+- Ollama (with nomic-embed-text model)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Manas-Nanivadekar/DONNA.git
+   cd DONNA
+   git checkout dev
+   ```
+
+2. **Set up environment variables**
+
+   Create a `.env.local` file in the root directory:
+   ```env
+   # Google Gemini AI
+   GOOGLE_API_KEY=your_google_api_key_here
+   
+   # MongoDB
+   MONGODB_URI=mongodb://localhost:27017
+   MONGODB_DB_NAME=donna
+   
+   # Qdrant
+   QDRANT_HOST=localhost
+   QDRANT_PORT=6333
+   
+   # Ollama
+   OLLAMA_BASE_URL=http://localhost:11434
+   ```
+
+3. **Install frontend dependencies**
+   ```bash
+   pnpm install
+   # or
+   npm install
+   # or
+   yarn install
+   ```
+
+4. **Install backend dependencies**
+   ```bash
+   # Create and activate virtual environment
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   
+   # Install Python packages
+   pip install -r requirements.txt
+   ```
+
+5. **Start required services**
+   ```bash
+   # Start MongoDB (if not already running)
+   mongod
+   
+   # Start Qdrant
+   docker run -p 6333:6333 qdrant/qdrant
+   
+   # Start Ollama
+   ollama serve
+   
+   # Pull required embedding model
+   ollama pull nomic-embed-text
+   ```
+
+6. **Run the application**
+   ```bash
+   pnpm dev
+   ```
+
+The application will be available at:
+- Frontend: `http://localhost:3000`
+- Backend API: `http://localhost:3000/api/*`
+
+---
+
+## 📂 Project Structure
+
 ```
-
-```bash
-pnpm create next-app --example https://github.com/vercel-labs/ai-sdk-preview-python-streaming ai-sdk-preview-python-streaming-example
-```
-
-To run the example locally you need to:
-
-1. Sign up for accounts with the AI providers you want to use (eg: Gemini).
-2. Obtain API keys for each provider.
-3. Set the required environment variables as shown in the `.env.example` file, but in a new file called `.env.local`.
-4. `pnpm install` to install the required Node dependencies.
-5. `virtualenv venv` to create a virtual environment.
-6. `source venv/bin/activate` to activate the virtual environment.
-7. `pip install -r requirements.txt` to install the required Python dependencies.
-8. `pnpm dev` to launch the development server.
-
-## Project Structure
-
-```
-├── api/                          # Python FastAPI backend
-│   ├── index.py                  # Main API endpoint (/api/chat)
+DONNA/
+├── api/                          # FastAPI Backend
+│   ├── index.py                  # Main API endpoint
+│   ├── services/
+│   │   ├── vector_store.py       # Qdrant vector operations
+│   │   ├── embedding.py          # Ollama embeddings
+│   │   └── llm.py                # Gemini AI integration
 │   └── utils/
-│       ├── __init__.py
-│       ├── attachment.py         # Attachment handling
-│       ├── prompt.py             # Message conversion to Gemini format
-│       ├── stream.py             # Streaming response handler
-│       └── tools.py              # Tool definitions (e.g., weather)
+│       ├── stream.py             # Response streaming
+│       ├── prompt.py             # Prompt engineering
+│       └── attachment.py         # File handling
 │
-├── app/                          # Next.js frontend
+├── app/                          # Next.js Frontend
 │   ├── (chat)/
-│   │   └── page.tsx              # Main chat page
+│   │   ├── page.tsx              # Main chat page
+│   │   └── [caseId]/             # Dynamic case routes
+│   ├── cases/
+│   │   └── page.tsx              # Case selection landing
 │   ├── layout.tsx                # Root layout
-│   ├── icons.tsx
-│   └── og/
-│       └── route.tsx             # Open Graph image route
+│   └── api/                      # API route handlers
 │
-├── components/                   # React components
-│   ├── chat.tsx                  # Chat container
-│   ├── message.tsx               # Message display
-│   ├── multimodal-input.tsx      # Input with file support
-│   ├── markdown.tsx              # Markdown renderer
-│   ├── navbar.tsx                # Navigation bar
-│   ├── overview.tsx              # Welcome overview
-│   ├── preview-attachment.tsx    # Attachment preview
-│   ├── weather.tsx               # Weather tool UI
-│   ├── icons.tsx
-│   └── ui/                       # UI primitives
-│       ├── button.tsx
-│       └── textarea.tsx
-│
-├── hooks/
-│   └── use-scroll-to-bottom.tsx  # Auto-scroll hook
+├── components/                   # React Components
+│   ├── chat.tsx                  # Chat interface
+│   ├── case-card.tsx             # Case preview cards
+│   ├── context-panel.tsx         # Collapsible summary
+│   ├── suggestions-panel.tsx     # Query suggestions
+│   ├── message.tsx               # Chat message display
+│   ├── multimodal-input.tsx      # Chat input field
+│   └── ui/                       # Reusable UI components
 │
 ├── lib/
+│   ├── db/
+│   │   ├── mongodb.ts            # MongoDB client
+│   │   └── models.ts             # Data models
 │   └── utils.ts                  # Utility functions
+│
+├── hooks/
+│   ├── use-chat-history.tsx      # Per-case chat state
+│   └── use-scroll-to-bottom.tsx  # Auto-scroll
+│
+├── public/
+│   └── cases/                    # Case metadata & assets
 │
 ├── requirements.txt              # Python dependencies
 ├── package.json                  # Node.js dependencies
-└── vercel.json                   # Vercel deployment config
+└── vercel.json                   # Deployment config
 ```
 
-## Gemini Setup
+---
 
-This project uses **Google Gemini 2.0 Flash** as the AI model. Here's how it's configured:
+## 🎨 User Experience Flow
 
-### 1. Environment Variables
+1. **Landing Page**: User sees four case study cards
+2. **One-Time Registration**: User provides name and email (stored locally)
+3. **Case Selection**: Click a case to enter its workspace
+4. **Workspace Interface**:
+   - **Left Panel**: Collapsible case summary with full historical context
+   - **Center**: Chat interface for conversational exploration
+   - **Right Panel**: Suggested queries that prefill the input
+5. **Exploration**: Ask questions, receive AI-streamed answers based on company data
+6. **Case Switching**: Each case maintains its own separate chat thread
 
-Create a `.env.local` file with your Google API key:
+---
 
-```bash
-GOOGLE_API_KEY=your_google_api_key_here
+## 🔧 API Endpoints
+
+### `POST /api/chat`
+Main chat endpoint for conversational AI
+
+**Request Body:**
+```json
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Why did Project Phoenix fail?"
+    }
+  ],
+  "caseId": "company-a",
+  "userId": "user-123"
+}
 ```
 
-### 2. Client Initialization (`api/index.py`)
+**Response:**
+Streamed text using Data Stream Protocol
 
-```python
-from google import genai
+### `GET /api/cases`
+Fetch all available case studies
 
-client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+**Response:**
+```json
+{
+  "cases": [
+    {
+      "id": "company-a",
+      "name": "Company A: The Scaling Crisis",
+      "description": "How rapid growth without infrastructure led to collapse",
+      "dataPoints": 1247
+    }
+  ]
+}
 ```
 
-### 3. Streaming Response (`api/utils/stream.py`)
+### `GET /api/cases/:caseId`
+Fetch specific case details and context
 
-The API uses Gemini's streaming content generation:
+---
 
-```python
-response = client.models.generate_content_stream(
-    model="gemini-2.0-flash",
-    contents=messages,
-    config=types.GenerateContentConfig(
-        tools=tool_definitions if tool_definitions else None,
-    ),
-)
-```
+## 🧪 Example Queries
 
-### 4. Message Format (`api/utils/prompt.py`)
+Each case workspace includes intelligent query suggestions:
 
-Messages are converted from the Vercel AI SDK format to Gemini's `Content` format:
+**For a Failed Product Launch:**
+- "What were the key warning signs before launch?"
+- "How did internal communication break down?"
+- "What technical debt contributed to the failure?"
 
-- Roles: `"assistant"` → `"model"`, `"user"` → `"user"`
-- Supports text, images (base64), and tool invocations
+**For a Scaling Crisis:**
+- "When did the infrastructure problems start?"
+- "What architectural decisions caused bottlenecks?"
+- "How did the team respond to the outage?"
 
-### 5. Tool Definitions (`api/utils/tools.py`)
+**For a Successful Pivot:**
+- "What data informed the pivot decision?"
+- "How did the team align on the new direction?"
+- "What was the turning point in customer adoption?"
 
-Tools are defined using Gemini's schema format:
+---
 
-```python
-TOOL_DEFINITIONS = [
-    types.Tool(
-        function_declarations=[
-            types.FunctionDeclaration(
-                name="get_current_weather",
-                description="Get the current weather at a location",
-                parameters=types.Schema(
-                    type=types.Type.OBJECT,
-                    properties={
-                        "latitude": types.Schema(type=types.Type.NUMBER, ...),
-                        "longitude": types.Schema(type=types.Type.NUMBER, ...),
-                    },
-                    required=["latitude", "longitude"],
-                ),
-            ),
-        ]
-    )
-]
-```
+## 🤝 Contributing
 
-### Key Dependencies
+We welcome contributions! Please follow these steps:
 
-```
-google-genai          # Google Generative AI SDK
-fastapi               # Web framework
-pydantic              # Data validation
-python-dotenv         # Environment variables
-```
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
 
-## Learn More
+---
 
-To learn more about the AI SDK or Next.js by Vercel, take a look at the following resources:
+<div align="center">
 
-- [AI SDK Documentation](https://sdk.vercel.ai/docs)
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Google Gemini API Documentation](https://ai.google.dev/docs)
+**DONNA** - *Because your organization's past deserves a future*
+
+⭐ Star this repo if you believe in preserving institutional knowledge!
+
+</div>
