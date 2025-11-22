@@ -11,6 +11,7 @@ dependencies = [
     "google-genai>=1.52.0",
     "ollama>=0.6.1",
     "openai>=2.8.1",
+    "pymongo>=4.15.4",
     "python-dotenv>=1.0.0",
     "qdrant-client>=1.16.0",
     "tqdm>=4.67.1",

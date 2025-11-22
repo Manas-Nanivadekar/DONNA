@@ -13,6 +13,7 @@ from utils.stream import (
 )
 from utils.tools import AVAILABLE_TOOLS, TOOL_DEFINITIONS
 from utils.contextual_llm import ContextualLLM
+from utils.company_metadata import CompanyMetadata
 
 
 load_dotenv(".env.local")
@@ -93,5 +94,27 @@ Provide general best practices and guidance."""
             "response": response_text,
             "used_context": request.use_context,
         }
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
+@app.get("/api/companies")
+async def get_all_companies():
+    try:
+        metadata = CompanyMetadata()
+        companies = metadata.get_all_companies()
+        return {"success": True, "companies": companies}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
+@app.get("/api/companies/{company_id}/metadata")
+async def get_company_metadata(company_id: str):
+    try:
+        metadata = CompanyMetadata()
+        company_data = metadata.get_company_metadata(company_id)
+        if not company_data:
+            return {"success": False, "error": "Company not found"}
+        return {"success": True, "metadata": company_data}
     except Exception as e:
         return {"success": False, "error": str(e)}
