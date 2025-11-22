@@ -1,5 +1,5 @@
 import os
-from typing import List
+from typing import List, Optional
 from pydantic import BaseModel
 from dotenv import load_dotenv
 from fastapi import FastAPI, Query, Request as FastAPIRequest
@@ -14,7 +14,12 @@ from utils.stream import (
 )
 from utils.tools import AVAILABLE_TOOLS, TOOL_DEFINITIONS
 from utils.contextual_llm import ContextualLLM
-from utils.company_metadata import CompanyMetadata, CompanyDataStore, UserManager
+from utils.company_metadata import (
+    CompanyMetadata,
+    CompanyDataStore,
+    UserManager,
+    ChatHistory,
+)
 from utils.ingestor import DataIngestor
 
 
@@ -37,7 +42,9 @@ class Request(BaseModel):
 
 class ContextualQueryRequest(BaseModel):
     company_id: str
+    user_id: str
     task: str
+    session_id: Optional[str] = None
     use_context: bool = True
     limit: int = 10
     stream: bool = False
@@ -81,6 +88,25 @@ async def handle_contextual_query(
     request: ContextualQueryRequest, protocol: str = Query("data")
 ):
     try:
+        user_manager = UserManager()
+        user = user_manager.get_user(request.user_id)
+        if not user:
+            return {"success": False, "error": "User not found"}
+
+        chat_history = ChatHistory()
+
+        # Create or use existing session
+        if request.session_id:
+            session = chat_history.get_session(request.session_id)
+            if not session:
+                return {"success": False, "error": "Session not found"}
+            session_id = request.session_id
+        else:
+            session_id = chat_history.create_session(request.user_id, request.company_id)
+
+        # Store user message
+        chat_history.add_message(session_id, "user", request.task)
+
         llm = ContextualLLM()
         client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
@@ -115,8 +141,12 @@ Provide general best practices and guidance."""
             use_context=request.use_context,
         )
 
+        # Store assistant response
+        chat_history.add_message(session_id, "assistant", response_text)
+
         return {
             "success": True,
+            "session_id": session_id,
             "company_id": request.company_id,
             "task": request.task,
             "response": response_text,
@@ -266,5 +296,51 @@ async def get_company_stats(company_id: str):
         data_store = CompanyDataStore()
         stats = data_store.get_data_stats(company_id)
         return {"success": True, "stats": stats}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
+@app.get("/api/users/{user_id}/chat-history")
+async def get_user_chat_history(
+    user_id: str, company_id: str = Query(None), limit: int = Query(50)
+):
+    try:
+        user_manager = UserManager()
+        user = user_manager.get_user(user_id)
+        if not user:
+            return {"success": False, "error": "User not found"}
+
+        chat_history = ChatHistory()
+        sessions = chat_history.get_user_sessions(user_id, company_id, limit)
+        return {
+            "success": True,
+            "user_id": user_id,
+            "sessions": sessions,
+            "count": len(sessions),
+        }
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
+@app.get("/api/sessions/{session_id}")
+async def get_session(session_id: str):
+    try:
+        chat_history = ChatHistory()
+        session = chat_history.get_session(session_id)
+        if not session:
+            return {"success": False, "error": "Session not found"}
+        return {"success": True, "session": session}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
+@app.get("/api/sessions/{session_id}/messages")
+async def get_session_messages(session_id: str):
+    try:
+        chat_history = ChatHistory()
+        messages = chat_history.get_session_messages(session_id)
+        if not messages:
+            return {"success": False, "error": "Session not found or no messages"}
+        return {"success": True, "session_id": session_id, "messages": messages}
     except Exception as e:
         return {"success": False, "error": str(e)}

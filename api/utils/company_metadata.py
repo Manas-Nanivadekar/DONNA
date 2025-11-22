@@ -233,6 +233,77 @@ This incident illustrated that retry logic is not a universal solution—it must
         print(f"Seeded {len(companies_data)} demo companies")
 
 
+class ChatHistory:
+    def __init__(self):
+        mongo_uri = os.getenv("MONGODB_URI", "mongodb://localhost:27017/")
+        self.client = MongoClient(mongo_uri)
+        self.db = self.client["donna"]
+        self.collection = self.db["chat_history"]
+
+    def create_session(self, user_id: str, company_id: str) -> str:
+        session_id = str(uuid.uuid4())
+        session = {
+            "session_id": session_id,
+            "user_id": user_id,
+            "company_id": company_id,
+            "messages": [],
+            "created_at": datetime.utcnow(),
+            "updated_at": datetime.utcnow(),
+        }
+        self.collection.insert_one(session)
+        return session_id
+
+    def add_message(
+        self, session_id: str, role: str, content: str, context_used: List[Dict] = None
+    ) -> Dict:
+        message = {
+            "role": role,
+            "content": content,
+            "timestamp": datetime.utcnow(),
+        }
+
+        if context_used:
+            message["context_used"] = context_used
+
+        result = self.collection.update_one(
+            {"session_id": session_id},
+            {
+                "$push": {"messages": message},
+                "$set": {"updated_at": datetime.utcnow()},
+            },
+        )
+
+        if result.modified_count > 0:
+            return {"success": True, "session_id": session_id}
+        return {"success": False, "error": "Session not found"}
+
+    def get_session(self, session_id: str) -> Optional[Dict]:
+        session = self.collection.find_one({"session_id": session_id}, {"_id": 0})
+        return session
+
+    def get_user_sessions(
+        self, user_id: str, company_id: Optional[str] = None, limit: int = 50
+    ) -> List[Dict]:
+        query = {"user_id": user_id}
+        if company_id:
+            query["company_id"] = company_id
+
+        sessions = list(
+            self.collection.find(query, {"_id": 0})
+            .sort("updated_at", -1)
+            .limit(limit)
+        )
+        return sessions
+
+    def get_session_messages(self, session_id: str) -> List[Dict]:
+        session = self.collection.find_one(
+            {"session_id": session_id}, {"_id": 0, "messages": 1}
+        )
+        if session:
+            return session.get("messages", [])
+        return []
+
+
 class CompanyDataStore:
     def __init__(self):
         mongo_uri = os.getenv("MONGODB_URI", "mongodb://localhost:27017/")
