@@ -17,6 +17,7 @@ def stream_text(
 ):
     """Yield Server-Sent Events for a streaming chat completion."""
     try:
+
         def format_sse(payload: dict) -> str:
             return f"data: {json.dumps(payload, separators=(',', ':'))}\n\n"
 
@@ -50,17 +51,27 @@ def stream_text(
                             # Handle text content
                             if part.text:
                                 if not text_started:
-                                    yield format_sse({"type": "text-start", "id": text_stream_id})
+                                    yield format_sse(
+                                        {"type": "text-start", "id": text_stream_id}
+                                    )
                                     text_started = True
                                 yield format_sse(
-                                    {"type": "text-delta", "id": text_stream_id, "delta": part.text}
+                                    {
+                                        "type": "text-delta",
+                                        "id": text_stream_id,
+                                        "delta": part.text,
+                                    }
                                 )
 
                             # Handle function calls
                             if part.function_call:
                                 tool_call_id = f"call-{uuid.uuid4().hex}"
                                 tool_name = part.function_call.name
-                                tool_args = dict(part.function_call.args) if part.function_call.args else {}
+                                tool_args = (
+                                    dict(part.function_call.args)
+                                    if part.function_call.args
+                                    else {}
+                                )
 
                                 state = tool_calls_state.setdefault(
                                     tool_call_id,
@@ -93,7 +104,7 @@ def stream_text(
                                 )
 
             # Check for usage metadata
-            if hasattr(chunk, 'usage_metadata') and chunk.usage_metadata:
+            if hasattr(chunk, "usage_metadata") and chunk.usage_metadata:
                 usage_data = chunk.usage_metadata
 
         # End text stream if started
@@ -160,14 +171,107 @@ def stream_text(
                 "RECITATION": "content-filter",
                 "OTHER": "other",
             }
-            finish_metadata["finishReason"] = reason_map.get(finish_reason, finish_reason.lower())
+            finish_metadata["finishReason"] = reason_map.get(
+                finish_reason, finish_reason.lower()
+            )
 
         if usage_data is not None:
             usage_payload = {
-                "promptTokens": getattr(usage_data, 'prompt_token_count', 0),
-                "completionTokens": getattr(usage_data, 'candidates_token_count', 0),
+                "promptTokens": getattr(usage_data, "prompt_token_count", 0),
+                "completionTokens": getattr(usage_data, "candidates_token_count", 0),
             }
-            total_tokens = getattr(usage_data, 'total_token_count', None)
+            total_tokens = getattr(usage_data, "total_token_count", None)
+            if total_tokens is not None:
+                usage_payload["totalTokens"] = total_tokens
+            finish_metadata["usage"] = usage_payload
+
+        if finish_metadata:
+            yield format_sse({"type": "finish", "messageMetadata": finish_metadata})
+        else:
+            yield format_sse({"type": "finish"})
+
+        yield "data: [DONE]\n\n"
+    except Exception:
+        traceback.print_exc()
+        raise
+
+
+def stream_contextual_response(
+    client: genai.Client,
+    prompt: str,
+    model: str = "gemini-2.5-flash",
+    protocol: str = "data",
+):
+    """Yield Server-Sent Events for a streaming contextual query response."""
+    try:
+
+        def format_sse(payload: dict) -> str:
+            return f"data: {json.dumps(payload, separators=(',', ':'))}\n\n"
+
+        message_id = f"msg-{uuid.uuid4().hex}"
+        text_stream_id = "text-1"
+        text_started = False
+        text_finished = False
+        finish_reason = None
+        usage_data = None
+
+        yield format_sse({"type": "start", "messageId": message_id})
+
+        response = client.models.generate_content_stream(
+            model=model,
+            contents=prompt,
+        )
+
+        for chunk in response:
+            if chunk.candidates:
+                for candidate in chunk.candidates:
+                    if candidate.finish_reason:
+                        finish_reason = candidate.finish_reason.name
+
+                    if candidate.content and candidate.content.parts:
+                        for part in candidate.content.parts:
+                            if part.text:
+                                if not text_started:
+                                    yield format_sse(
+                                        {"type": "text-start", "id": text_stream_id}
+                                    )
+                                    text_started = True
+                                yield format_sse(
+                                    {
+                                        "type": "text-delta",
+                                        "id": text_stream_id,
+                                        "delta": part.text,
+                                    }
+                                )
+
+            if hasattr(chunk, "usage_metadata") and chunk.usage_metadata:
+                usage_data = chunk.usage_metadata
+
+        # End text stream if started
+        if text_started and not text_finished:
+            yield format_sse({"type": "text-end", "id": text_stream_id})
+            text_finished = True
+
+        # Build finish metadata
+        finish_metadata: Dict[str, Any] = {}
+        if finish_reason is not None:
+            reason_map = {
+                "STOP": "stop",
+                "MAX_TOKENS": "length",
+                "SAFETY": "content-filter",
+                "RECITATION": "content-filter",
+                "OTHER": "other",
+            }
+            finish_metadata["finishReason"] = reason_map.get(
+                finish_reason, finish_reason.lower()
+            )
+
+        if usage_data is not None:
+            usage_payload = {
+                "promptTokens": getattr(usage_data, "prompt_token_count", 0),
+                "completionTokens": getattr(usage_data, "candidates_token_count", 0),
+            }
+            total_tokens = getattr(usage_data, "total_token_count", None)
             if total_tokens is not None:
                 usage_payload["totalTokens"] = total_tokens
             finish_metadata["usage"] = usage_payload
