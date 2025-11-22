@@ -327,7 +327,7 @@ Fetch specific case details and context
 > ### Migration 1: MongoDB → PostgreSQL (June 2022)
 > **Scale:** 3M documents  
 > **Duration:** 2 weeks  
-> **Outcome:** ⚠️ Partially successful
+> **Outcome:** Partially successful
 > 
 > **What went wrong:**
 > - Underestimated downtime: 6 hours instead of planned 2 hours
@@ -341,7 +341,7 @@ Fetch specific case details and context
 > ### Migration 2: PostgreSQL → PostgreSQL (New Schema) (March 2023)
 > **Scale:** 5M rows  
 > **Duration:** 4 days (zero downtime)  
-> **Outcome:** ✅ Success
+> **Outcome:** Success
 > 
 > **What worked:**
 > 1. **Dual-write period:** Wrote to both old and new schema for 1 week
@@ -370,7 +370,7 @@ Fetch specific case details and context
 
 ---
 
-## 📊 Quantified Impact Across Use Cases
+## Quantified Impact Across Use Cases
 
 Organizations using DONNA report measurable ROI across common engineering scenarios:
 
