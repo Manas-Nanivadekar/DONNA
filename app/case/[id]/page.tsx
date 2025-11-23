@@ -20,6 +20,7 @@ export default function CaseWorkspace() {
     const [showIdentityModal, setShowIdentityModal] = useState(false);
     const [chatInput, setChatInput] = useState("");
     const [sessionKey, setSessionKey] = useState(0); // Key to force remount
+    const [loadSessionId, setLoadSessionId] = useState<string | null>(null);
 
     useEffect(() => {
         if (!loading && !identity) {
@@ -29,11 +30,14 @@ export default function CaseWorkspace() {
 
     const handleNewChat = useCallback(() => {
         // Force remount of ChatInterface to start a new session
+        setLoadSessionId(null);
         setSessionKey(prev => prev + 1);
     }, []);
 
     const handleLoadSession = useCallback((sessionId: string) => {
         // Force remount of ChatInterface with loaded session
+        console.log("Loading session:", sessionId);
+        setLoadSessionId(sessionId);
         setSessionKey(prev => prev + 1);
     }, []);
 
@@ -79,6 +83,7 @@ export default function CaseWorkspace() {
                     <ChatInterface
                         key={sessionKey}
                         caseId={caseId}
+                        loadSessionId={loadSessionId}
                         initialInput={chatInput}
                         onInputChange={setChatInput}
                     />
@@ -98,6 +103,7 @@ export default function CaseWorkspace() {
                         <ChatInterface
                             key={sessionKey}
                             caseId={caseId}
+                            loadSessionId={loadSessionId}
                             initialInput={chatInput}
                             onInputChange={setChatInput}
                         />
@@ -115,7 +121,7 @@ export default function CaseWorkspace() {
                                         <ChatHistory
                                             userId={identity.user_id}
                                             caseId={caseId}
-                                            currentSessionId={null}
+                                            currentSessionId={loadSessionId}
                                             onLoadSession={handleLoadSession}
                                             onNewChat={handleNewChat}
                                         />

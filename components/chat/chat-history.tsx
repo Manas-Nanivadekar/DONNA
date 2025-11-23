@@ -29,10 +29,23 @@ export function ChatHistory({
 
     useEffect(() => {
         const loadHistory = async () => {
+            if (!userId) {
+                setLoading(false);
+                return;
+            }
+
+            setLoading(true);
+            setError(null);
+
             try {
+                console.log("Fetching chat history for user:", userId, "case:", caseId);
                 const response = await fetchChatHistory(userId, caseId, 10);
+                console.log("Chat history response:", response);
+
                 if (response.success) {
-                    setSessions(response.sessions);
+                    setSessions(response.sessions || []);
+                } else {
+                    setError("Failed to load history");
                 }
             } catch (err) {
                 console.error("Failed to load chat history:", err);
@@ -42,9 +55,7 @@ export function ChatHistory({
             }
         };
 
-        if (userId) {
-            loadHistory();
-        }
+        loadHistory();
     }, [userId, caseId]);
 
     const formatDate = (dateStr: string) => {

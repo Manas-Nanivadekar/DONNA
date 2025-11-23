@@ -14,51 +14,72 @@ interface Message {
 interface UseChatProps {
     caseId: string;
     userId?: string;
+    loadSessionId?: string | null;
 }
 
-export function useChat({ caseId, userId }: UseChatProps) {
+export function useChat({ caseId, userId, loadSessionId }: UseChatProps) {
     const [messages, setMessages] = useState<Message[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [sessionId, setSessionId] = useState<string | null>(null);
     const [loadingSession, setLoadingSession] = useState(true);
 
-    // Load existing session on mount
+    // Load existing session on mount or when userId/loadSessionId changes
     useEffect(() => {
         const loadExistingSession = async () => {
             if (!userId) {
+                // Clear messages if userId becomes null
+                setMessages([]);
+                setSessionId(null);
                 setLoadingSession(false);
                 return;
             }
 
-            const existingSessionId = getSession(caseId, userId);
+            setLoadingSession(true);
 
-            if (existingSessionId) {
+            // Prioritize loadSessionId if provided, otherwise check localStorage
+            const sessionIdToLoad = loadSessionId || getSession(caseId, userId);
+
+            if (sessionIdToLoad) {
                 try {
-                    // Load messages from the existing session
-                    const response = await fetchSessionMessages(existingSessionId);
+                    console.log("Loading session:", sessionIdToLoad);
+                    // Load messages from the session
+                    const response = await fetchSessionMessages(sessionIdToLoad);
+                    console.log("Session messages response:", response);
+
                     if (response.success && response.messages) {
                         const loadedMessages: Message[] = response.messages.map((msg, idx) => ({
-                            id: `${existingSessionId}_${idx}`,
+                            id: `${sessionIdToLoad}_${idx}`,
                             role: msg.role,
                             content: msg.content,
                             timestamp: msg.timestamp,
                         }));
                         setMessages(loadedMessages);
-                        setSessionId(existingSessionId);
+                        setSessionId(sessionIdToLoad);
+                        // Update localStorage with the loaded session
+                        setSession(caseId, userId, sessionIdToLoad);
                     }
                 } catch (err) {
                     console.error("Failed to load session:", err);
                     // Clear invalid session
-                    clearSession(caseId, userId);
+                    if (!loadSessionId) {
+                        clearSession(caseId, userId);
+                    }
+                    setMessages([]);
+                    setSessionId(null);
                 }
+            } else {
+                // No existing session, start fresh
+                console.log("No existing session, starting fresh");
+                setMessages([]);
+                setSessionId(null);
             }
 
             setLoadingSession(false);
         };
 
         loadExistingSession();
-    }, [caseId, userId]);
+    }, [caseId, userId, loadSessionId]);
 
     const sendMessage = useCallback(
         async (content: string) => {
@@ -120,6 +141,7 @@ export function useChat({ caseId, userId }: UseChatProps) {
 
                 // After receiving all chunks, parse the complete JSON response
                 let finalContent = "";
+                let backendSessionId: string | null = null;
                 try {
                     const jsonResponse = JSON.parse(buffer);
 
@@ -128,6 +150,7 @@ export function useChat({ caseId, userId }: UseChatProps) {
 
                         // Update session ID if provided by backend
                         if (jsonResponse.session_id && !sessionId && userId) {
+                            backendSessionId = jsonResponse.session_id;
                             setSessionId(jsonResponse.session_id);
                             setSession(caseId, userId, jsonResponse.session_id);
                         }
@@ -163,9 +186,9 @@ export function useChat({ caseId, userId }: UseChatProps) {
                     await new Promise(resolve => setTimeout(resolve, 30));
                 }
 
-                // Store session if we don't have one yet
-                if (!sessionId && userId) {
-                    const newSessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+                // Only create fallback session if backend didn't provide one
+                if (!sessionId && !backendSessionId && userId) {
+                    const newSessionId = `session_${Date.now()}_${Math.random().toString(36).substring(2, 11)}`;
                     setSessionId(newSessionId);
                     setSession(caseId, userId, newSessionId);
                 }

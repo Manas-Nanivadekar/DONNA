@@ -12,15 +12,17 @@ import { User } from "lucide-react";
 
 interface ChatInterfaceProps {
     caseId: string;
+    loadSessionId?: string | null;
     initialInput?: string;
     onInputChange?: (value: string) => void;
 }
 
-export function ChatInterface({ caseId, initialInput, onInputChange }: ChatInterfaceProps) {
+export function ChatInterface({ caseId, loadSessionId, initialInput, onInputChange }: ChatInterfaceProps) {
     const { identity } = useIdentity();
     const { messages, sendMessage, isLoading, error, loadingSession } = useChat({
         caseId,
-        userId: identity?.user_id
+        userId: identity?.user_id,
+        loadSessionId: loadSessionId
     });
     const [showIdentityModal, setShowIdentityModal] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
