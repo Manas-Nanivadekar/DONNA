@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 from fastapi import FastAPI, Query, Request as FastAPIRequest
 from fastapi.middleware.cors import CORSMiddleware
+from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
 from fastapi.responses import StreamingResponse
 from google import genai
 from utils.prompt import ClientMessage, convert_to_gemini_messages
@@ -27,6 +28,7 @@ load_dotenv(".env.local")
 
 app = FastAPI()
 
+app.add_middleware(ProxyHeadersMiddleware, trusted_hosts="*")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
