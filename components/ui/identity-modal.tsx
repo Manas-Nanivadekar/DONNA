@@ -18,6 +18,7 @@ export function IdentityModal({ open, onOpenChange }: IdentityModalProps) {
     const [email, setEmail] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
     useEffect(() => {
         if (identity) {
@@ -39,7 +40,7 @@ export function IdentityModal({ open, onOpenChange }: IdentityModalProps) {
 
         try {
             // Call the register user API
-            const response = await fetch("http://15.206.173.162:8000/api/users/register", {
+            const response = await fetch(`${baseUrl}/api/users/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

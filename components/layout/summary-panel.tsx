@@ -21,11 +21,12 @@ interface CompanyMetadata {
 export function SummaryPanel({ caseId, className }: SummaryPanelProps) {
     const [metadata, setMetadata] = useState<CompanyMetadata | null>(null);
     const [loading, setLoading] = useState(true);
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
     useEffect(() => {
         const fetchMetadata = async () => {
             try {
-                const response = await fetch(`http://15.206.173.162:8000/api/companies/${caseId}/metadata`);
+                const response = await fetch(`${baseUrl}/api/companies/${caseId}/metadata`);
                 const data = await response.json();
                 if (data.success) {
                     setMetadata(data.metadata);

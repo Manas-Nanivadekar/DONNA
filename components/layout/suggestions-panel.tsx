@@ -22,6 +22,7 @@ interface CompanyMetadata {
 export function SuggestionsPanel({ onSelect, className, caseId }: SuggestionsPanelProps) {
     const [suggestions, setSuggestions] = useState<string[]>([]);
     const [loading, setLoading] = useState(true);
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
     useEffect(() => {
         const fetchSuggestions = async () => {
@@ -31,7 +32,7 @@ export function SuggestionsPanel({ onSelect, className, caseId }: SuggestionsPan
             }
 
             try {
-                const response = await fetch(`http://15.206.173.162:8000/api/companies/${caseId}/metadata`);
+                const response = await fetch(`${baseUrl}/api/companies/${caseId}/metadata`);
                 const data = await response.json();
                 if (data.success && data.metadata.suggested_questions) {
                     setSuggestions(data.metadata.suggested_questions);
