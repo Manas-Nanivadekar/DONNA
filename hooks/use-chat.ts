@@ -23,6 +23,7 @@ export function useChat({ caseId, userId, loadSessionId }: UseChatProps) {
     const [error, setError] = useState<string | null>(null);
     const [sessionId, setSessionId] = useState<string | null>(null);
     const [loadingSession, setLoadingSession] = useState(true);
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
     // Load existing session on mount or when userId/loadSessionId changes
     useEffect(() => {
@@ -97,7 +98,7 @@ export function useChat({ caseId, userId, loadSessionId }: UseChatProps) {
             setError(null);
 
             try {
-                const response = await fetch("http://15.206.173.162:8000/api/contextual-query", {
+                const response = await fetch(`${baseUrl}/api/contextual-query`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

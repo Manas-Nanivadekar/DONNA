@@ -2,7 +2,7 @@
  * API client for chat history endpoints
  */
 
-const API_BASE = "http://15.206.173.162:8000";
+const API_BASE = process.env.NEXT_PUBLIC_BASE_URL;
 
 export interface ChatMessage {
     role: "user" | "assistant";

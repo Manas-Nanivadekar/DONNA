@@ -73,13 +73,12 @@ const TimelineVisual = () => (
         className="flex items-center gap-4 rounded-lg border border-white/10 bg-neutral-900/50 p-4 backdrop-blur-sm"
       >
         <div
-          className={`h-8 w-8 rounded-full flex items-center justify-center ${
-            i === 1
-              ? "bg-blue-500/20 text-blue-400"
-              : i === 2
+          className={`h-8 w-8 rounded-full flex items-center justify-center ${i === 1
+            ? "bg-blue-500/20 text-blue-400"
+            : i === 2
               ? "bg-purple-500/20 text-purple-400"
               : "bg-green-500/20 text-green-400"
-          }`}
+            }`}
         >
           {i === 1 ? (
             <MessageSquare size={16} />
@@ -194,13 +193,12 @@ export default function Home() {
     FEATURES.find((f) => f.id === activeFeature) || FEATURES[0];
   const [cases, setCases] = useState<CaseStudy[]>([]);
   const router = useRouter();
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   useEffect(() => {
     const fetchCases = async () => {
       try {
-        const response = await fetch(
-          "http://15.206.173.162:8000/api/companies"
-        );
+        const response = await fetch(`${baseUrl}/api/companies`);
         const data = await response.json();
         if (data.success) {
           setCases(data.companies);
@@ -376,48 +374,43 @@ export default function Home() {
                 <button
                   key={feature.id}
                   onClick={() => setActiveFeature(feature.id)}
-                  className={`group relative flex flex-col gap-2 rounded-xl border p-6 text-left transition-all duration-300 ${
-                    activeFeature === feature.id
-                      ? "border-white/20 bg-neutral-900"
-                      : "border-transparent hover:bg-neutral-900/50"
-                  }`}
+                  className={`group relative flex flex-col gap-2 rounded-xl border p-6 text-left transition-all duration-300 ${activeFeature === feature.id
+                    ? "border-white/20 bg-neutral-900"
+                    : "border-transparent hover:bg-neutral-900/50"
+                    }`}
                 >
                   <div className="flex items-center gap-4">
                     <div
-                      className={`flex h-8 w-8 items-center justify-center rounded-md transition-colors ${
-                        activeFeature === feature.id
-                          ? "text-white"
-                          : "text-neutral-500"
-                      }`}
+                      className={`flex h-8 w-8 items-center justify-center rounded-md transition-colors ${activeFeature === feature.id
+                        ? "text-white"
+                        : "text-neutral-500"
+                        }`}
                     >
                       {feature.icon}
                     </div>
                     <span
-                      className={`text-xs font-bold tracking-widest uppercase ${
-                        activeFeature === feature.id
-                          ? "text-neutral-400"
-                          : "text-neutral-600"
-                      }`}
+                      className={`text-xs font-bold tracking-widest uppercase ${activeFeature === feature.id
+                        ? "text-neutral-400"
+                        : "text-neutral-600"
+                        }`}
                     >
                       {feature.subtitle}
                     </span>
                   </div>
                   <div className="pl-12">
                     <h3
-                      className={`text-lg font-semibold transition-colors ${
-                        activeFeature === feature.id
-                          ? "text-white"
-                          : "text-neutral-400"
-                      }`}
+                      className={`text-lg font-semibold transition-colors ${activeFeature === feature.id
+                        ? "text-white"
+                        : "text-neutral-400"
+                        }`}
                     >
                       {feature.title}
                     </h3>
                     <div
-                      className={`grid transition-all duration-300 ${
-                        activeFeature === feature.id
-                          ? "grid-rows-[1fr] opacity-100 pt-2"
-                          : "grid-rows-[0fr] opacity-0"
-                      }`}
+                      className={`grid transition-all duration-300 ${activeFeature === feature.id
+                        ? "grid-rows-[1fr] opacity-100 pt-2"
+                        : "grid-rows-[0fr] opacity-0"
+                        }`}
                     >
                       <p className="overflow-hidden text-neutral-400 text-sm leading-relaxed">
                         {feature.description}
@@ -546,7 +539,7 @@ export default function Home() {
             Ready to stop the cycle of amnesia?
           </p>
           <div className="mt-12 flex justify-center gap-4">
-            <button className="rounded-full bg-white px-10 py-4 text-base font-bold text-black hover:bg-neutral-200 transition-colors shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]">
+            <button onClick={() => router.push("/case")} className="rounded-full bg-white px-10 py-4 text-base font-bold text-black hover:bg-neutral-200 transition-colors shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]">
               Get Started Now
             </button>
           </div>

@@ -14,11 +14,12 @@ interface CaseStudy {
 export default function CasesPage() {
     const [cases, setCases] = useState<CaseStudy[]>([]);
     const router = useRouter();
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
     useEffect(() => {
         const fetchCases = async () => {
             try {
-                const response = await fetch("http://15.206.173.162:8000/api/companies");
+                const response = await fetch(`${baseUrl}/api/companies`);
                 const data = await response.json();
                 if (data.success) {
                     setCases(data.companies);
