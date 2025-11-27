@@ -56,7 +56,7 @@ export default function CasesPage() {
                             </p>
                         </div>
                         <div className="flex-shrink-0">
-                            <Button>Create Case Study</Button>
+                            <Button onClick={() => router.push("/create")}>Create Case Study</Button>
                         </div>
                     </div>
 
