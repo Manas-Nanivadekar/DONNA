@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ChevronRight, Terminal, ArrowLeft } from "lucide-react";
+import { ArrowLeft, Terminal } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface CaseStudy {
     company_id: string;
@@ -47,12 +48,15 @@ export default function CasesPage() {
                         Back to Home
                     </button>
 
-                    <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-6">
                         <div>
                             <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Case Studies</h2>
                             <p className="mt-4 text-neutral-400 max-w-xl text-lg">
                                 Real examples of how DONNA structures disparate events into actionable insights.
                             </p>
+                        </div>
+                        <div className="flex-shrink-0">
+                            <Button>Create Case Study</Button>
                         </div>
                     </div>
 

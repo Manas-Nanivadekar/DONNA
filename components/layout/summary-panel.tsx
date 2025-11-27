@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { FileText } from "lucide-react";
+import { ChevronLeft, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 interface SummaryPanelProps {
     caseId: string;
@@ -22,6 +23,7 @@ export function SummaryPanel({ caseId, className }: SummaryPanelProps) {
     const [metadata, setMetadata] = useState<CompanyMetadata | null>(null);
     const [loading, setLoading] = useState(true);
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+    const navigate = useRouter();
 
     useEffect(() => {
         const fetchMetadata = async () => {
@@ -47,7 +49,8 @@ export function SummaryPanel({ caseId, className }: SummaryPanelProps) {
                 className
             )}
         >
-            <div className="flex h-14 items-center justify-between border-b border-white/10 px-4">
+            <div className="flex h-14 items-center gap-2 border-b border-white/10 px-4">
+                <ChevronLeft onClick={() => { navigate.back() }} className="h-4 w-4 cursor-pointer text-white" />
                 <span className="font-semibold text-white">Case Summary</span>
             </div>
 
