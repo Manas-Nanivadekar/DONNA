@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { useParams } from "next/navigation";
-import { Menu, Lightbulb } from "lucide-react";
+import { useParams, useRouter } from "next/navigation";
+import { Menu, Lightbulb, ArrowLeft } from "lucide-react";
 import { SummaryPanel } from "@/components/layout/summary-panel";
 import { SuggestionsPanel } from "@/components/layout/suggestions-panel";
 import { ChatInterface } from "@/components/chat/chat-interface";
@@ -15,6 +15,7 @@ import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 
 export default function CaseWorkspace() {
     const params = useParams();
+    const router = useRouter();
     const caseId = params.id as string;
     const { identity, loading } = useIdentity();
     const [showIdentityModal, setShowIdentityModal] = useState(false);
@@ -51,9 +52,18 @@ export default function CaseWorkspace() {
             <div className="flex h-full flex-col md:hidden">
                 <header className="flex h-14 items-center justify-between border-b border-white/10 px-4">
                     <div className="flex items-center gap-2">
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => router.push("/")}
+                            className="-ml-2 text-white hover:bg-white/10 hover:text-white"
+                        >
+                            <ArrowLeft className="h-5 w-5" />
+                            <span className="sr-only">Back to Home</span>
+                        </Button>
                         <Sheet>
                             <SheetTrigger asChild>
-                                <Button variant="ghost" size="icon" className="-ml-2 text-white hover:bg-white/10 hover:text-white">
+                                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 hover:text-white">
                                     <Menu className="h-5 w-5" />
                                     <span className="sr-only">Summary</span>
                                 </Button>
@@ -91,8 +101,20 @@ export default function CaseWorkspace() {
             </div>
 
             {/* Desktop Layout with Resizable Panels */}
-            <div className="hidden md:block h-full w-full">
-                <PanelGroup direction="horizontal">
+            <div className="hidden md:flex md:flex-col h-full w-full">
+                <header className="flex h-14 items-center border-b border-white/10 px-6">
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => router.push("/")}
+                        className="text-white hover:bg-white/10 hover:text-white"
+                    >
+                        <ArrowLeft className="h-5 w-5" />
+                        <span className="sr-only">Back to Home</span>
+                    </Button>
+                    <h1 className="ml-4 font-semibold text-white">{caseId}</h1>
+                </header>
+                <PanelGroup direction="horizontal" className="flex-1">
                     <Panel defaultSize={20} minSize={15} maxSize={30} className="bg-black border-r border-white/10">
                         <SummaryPanel caseId={caseId} className="border-none" />
                     </Panel>
